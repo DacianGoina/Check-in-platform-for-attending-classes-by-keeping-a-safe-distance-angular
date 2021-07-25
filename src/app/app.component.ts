@@ -12,4 +12,7 @@ export class AppComponent {
   viewDate: Date = new Date();
   view: CalendarView = CalendarView.Week;
   CalendarView = CalendarView;
+  setView(view: CalendarView) {
+    this.view = view;
+  }
 }
