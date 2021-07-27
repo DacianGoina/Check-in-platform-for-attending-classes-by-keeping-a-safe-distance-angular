@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CalendarView } from 'angular-calendar';
+import { CalendarEvent } from 'angular-calendar';
 
 @Component({
   selector: 'app-root',
@@ -15,4 +16,18 @@ export class AppComponent {
   setView(view: CalendarView) {
     this.view = view;
   }
+  events: CalendarEvent[] = [
+    {
+      start: new Date('2021-07-28'),
+      title: 'an event',
+    },
+    {
+      start: new Date('2021-07-24'),
+      title: 'another event',
+    },
+    {
+      start: new Date('2021-07-16'),
+      title: 'you get the idea ',
+    }
+  ]
 }
