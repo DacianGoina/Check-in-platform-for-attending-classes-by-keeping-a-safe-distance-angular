@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from "../user";
+import {UserService} from "../user.service";
 
 @Component({
   selector: 'app-user-block',
@@ -8,9 +9,16 @@ import {User} from "../user";
 })
 export class UserBlockComponent implements OnInit {
   users:User[] | undefined;
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    this.getUsers();
+  }
+
+  private getUsers(){
+    this.userService.getUsersList().subscribe(data =>{
+      this.users = data;
+    });
   }
 
 }
