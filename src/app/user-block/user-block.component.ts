@@ -37,6 +37,7 @@ export class UserBlockComponent implements OnInit {
 
     this.getUsers();
 
+
   }
 
   private getUsers(){
