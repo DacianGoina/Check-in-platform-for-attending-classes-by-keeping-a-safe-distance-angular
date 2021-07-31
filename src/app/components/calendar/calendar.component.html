@@ -1,0 +1,17 @@
+<button (click)="nextweek()">nextweek</button>
+<button (click)="lastweek()">lastweek</button>
+{{today}}
+<div class="container">
+  <div class="row">
+    <div class="col-sm"><h3>Hours</h3></div>
+    <div class="col-sm" *ngFor="let day of thisweek">
+      <h3> {{ day | date }} </h3>
+    </div>
+  </div>
+  <div class="row" *ngFor="let hour of hours">
+    <div class="col-sm" ><h3>{{hour}}</h3></div>
+    <div class="col-sm" *ngFor="let day of thisweek">
+
+    </div>
+  </div>
+</div>
