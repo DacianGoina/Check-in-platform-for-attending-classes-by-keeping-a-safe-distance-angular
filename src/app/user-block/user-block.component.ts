@@ -26,10 +26,11 @@ export class UserBlockComponent implements OnInit {
 
       this.classDTOService.getClassDTOList().subscribe(data=>{
           this.classDTOarray = data;
+
           let str = JSON.stringify(data);
           str = JSON.stringify(data, null, 4);
           console.log(str);
-      })
+      });
 
     this.getUsers();
 
