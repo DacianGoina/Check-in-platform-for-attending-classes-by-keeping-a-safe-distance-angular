@@ -9,6 +9,7 @@ import {ClassDTO} from "./class-dto";
 })
 export class ClassDTOService {
 
+
   private baseURL:string = "http://localhost:8080/classdto";
   constructor(private httpClient: HttpClient) { }
   getClassDTOList() : Observable<ClassDTO[]>{
