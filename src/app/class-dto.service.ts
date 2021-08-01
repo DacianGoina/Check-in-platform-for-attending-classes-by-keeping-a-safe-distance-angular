@@ -15,4 +15,5 @@ export class ClassDTOService {
   getClassDTOList() : Observable<ClassDTO[]>{
     return this.httpClient.get<ClassDTO[]>(`${this.baseURL}`);
   }
+
 }

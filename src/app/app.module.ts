@@ -9,6 +9,7 @@ import { CalendarComponent } from './components/calendar/calendar.component';
 
 import { DatePipe } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
+import { ScheduleComponent } from './components/schedule/schedule.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { HeaderComponent } from './components/header/header.component';
     AppComponent,
     UserBlockComponent,
     CalendarComponent,
-    HeaderComponent
+    HeaderComponent,
+    ScheduleComponent
   ],
   imports: [
     BrowserModule,

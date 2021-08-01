@@ -1,6 +1,7 @@
 
 .colorat{
   background-color: cadetblue;
+  width: 100%;
 }
 .button {
   background-color: cadetblue; /* Green */
@@ -43,7 +44,20 @@
 .days{
   border: 1px solid;
   background-color: cadetblue;
+  font-size: 10px;
 }
 .cont{
   top: auto;
+  width: 90%;
+  border-bottom: 1px solid;
+  margin: auto;
+}
+.colorat:hover{
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+  background-color: lightslategray;
+}
+.emptys{
+  border-left: 1px solid;
+  border-right: 1px solid;
+  height: 100px;
 }

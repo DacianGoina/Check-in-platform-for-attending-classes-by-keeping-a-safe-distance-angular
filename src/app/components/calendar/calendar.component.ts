@@ -4,6 +4,7 @@ import {User} from "../../user";
 import {ClassDTO} from "../../class-dto";
 import {UserService} from "../../user.service";
 import {ClassDTOService} from "../../class-dto.service";
+import { Router } from '@angular/router';
 
 
 
@@ -21,7 +22,7 @@ export class CalendarComponent implements OnInit {
   users:User[] | undefined;
   classDTOarray:ClassDTO[] | undefined;
 
-  constructor(private userService: UserService, private classDTOService: ClassDTOService) {
+  constructor(private userService: UserService, private classDTOService: ClassDTOService, public router: Router) {
 
 
   }
@@ -122,4 +123,7 @@ export class CalendarComponent implements OnInit {
     return cond;
   }
 
+  clickedEvent(){
+
+  }
 }

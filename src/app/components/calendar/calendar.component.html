@@ -6,7 +6,7 @@
 <button class="button button2 right" (click)="nextweek()">nextweek</button>
 </div>
 
-<div class="container cont" style="border-bottom: 1px solid">
+<div class="cont" >
   <div class="row">
     <div class="ore days"></div>
     <div class="col-sm days" *ngFor="let day of thisweek" >
@@ -15,14 +15,17 @@
   </div>
   <div class="row" *ngFor="let hour of hours" >
     <div class="ore" >{{hour}}</div>
-    <div class="col-sm" *ngFor="let day of thisweek" style="border-left: 1px solid; border-right: 1px solid; height: 100px;"
-         (click)="clickedhour(day, hour)"  >
-      <div class="colorat" *ngIf="eventIsNow(day, hour)" > {{event.courseName}} is in room {{event.roomName}}, teacher: {{event.teacherLastName}}, capacity {{event.capacity}}</div>
+    <div class="col-sm emptys" *ngFor="let day of thisweek"   >
+      <div class="colorat" *ngIf="eventIsNow(day, hour)"   routerLink="/class/{{event.id}}" >
+        Coursename:{{event.courseName}}
+        Classroom {{event.roomName}}
+        Teacher: {{event.teacherLastName}}
+        Capacity </div>
 
     </div>
   </div>
 </div>
-<h2>day clicked is {{dayclick}} </h2>
+
 
 
 <div *ngFor="let classDTO of classDTOarray">
