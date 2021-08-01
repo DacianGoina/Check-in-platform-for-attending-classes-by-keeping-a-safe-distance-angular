@@ -1,5 +1,5 @@
 import { Component, OnInit} from '@angular/core';
-import {addDays, subDays} from 'date-fns';
+import {addDays, subDays, addHours, isToday, setHours, isEqual, isSameHour} from 'date-fns';
 import {User} from "../../user";
 import {ClassDTO} from "../../class-dto";
 import {UserService} from "../../user.service";
@@ -17,8 +17,8 @@ import {ClassDTOService} from "../../class-dto.service";
 })
 export class CalendarComponent implements OnInit {
  // hours= ['8:00', '9:40', '11:20', '13:00', '14:40', "16:20", "18:00", "19:40"];
-  hours= ['8:00', '9:00', '10:00', "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00"];
-
+ // hours= ['8:00', '9:00', '10:00', "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00"];
+hours=[8,9,10,11,12,13,14,15,16,17,18,19,20]
   // tablouri care transporta date
   users:User[] | undefined;
   classDTOarray:ClassDTO[] | undefined;
@@ -29,16 +29,25 @@ export class CalendarComponent implements OnInit {
 
   }
 
-  events: Array<any> = [
+  evenimente: Array<any> = [
     {
-
+      courseName: 'Info',
+      roomName: 'Stefan',
+      startDate: new Date(),
+      endDate: addHours(new Date(), 2)
+    },
+    {
+      courseName: 'Info',
+      roomName: 'Stefan',
+      startDate: addDays(new Date(), 2),
+      endDate: addHours(new Date(), 2)
     }
     ];
 
   today: Date= new Date();
   first= this.today.getDate()-this.today.getDay();
   thisweek=this.getweek();
-
+  dayclick:any;
 
   getweek(){
    return [new Date(this.today.setDate(this.first)),
@@ -52,16 +61,19 @@ export class CalendarComponent implements OnInit {
   }
   nextweek(){
     this.today=addDays(this.today, 7);
-    this.first= this.today.getDate()-this.today.getDay()+1;
+    this.first= this.today.getDate()-this.today.getDay();
     this.thisweek=this.getweek();
   }
   lastweek(){
     this.today=subDays(this.today, 7)
-    this.first= this.today.getDate()-this.today.getDay()+1;
+    this.first= this.today.getDate()-this.today.getDay();
     this.thisweek=this.getweek();
   }
+  clickedhour(dayClicked: Date, hourClicked: any){
+    this.dayclick=setHours(dayClicked, hourClicked);
 
 
+  }
 
   ngOnInit(): void {
     console.log("pagina cu calendarul!");
@@ -100,5 +112,23 @@ export class CalendarComponent implements OnInit {
       this.classDTOarray = data;
     });
   }
+
+
+  eventIsNow(thisdate: Date, hour:number):any{
+    let times= setHours(thisdate, hour)
+    for(let a of this.evenimente){
+      if(isSameHour(a.startDate, times)){
+        return true;
+      }
+    }
+    return false;
+  }
+
+  datefunc(){
+    for(let a of this.evenimente){
+      console.log(a.startDate);
+    }
+  }
+
 
 }
