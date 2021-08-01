@@ -74,6 +74,8 @@ export class CalendarComponent implements OnInit {
       console.log(str);
     });
 
+
+
     console.log("CLASSES:");
     this.classDTOService.getClassDTOList().subscribe(data=>{
       this.classDTOarray = data;
@@ -82,7 +84,8 @@ export class CalendarComponent implements OnInit {
       console.log(str);
       });
 
-    //this.getUsers();
+    // aici se face return la datele despre class dto, apoi se poti folosi pentru {{}}
+    this.getClassesDTO();
   }
 
 
