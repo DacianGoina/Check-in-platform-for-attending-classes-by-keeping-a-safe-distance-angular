@@ -8,13 +8,15 @@ import {HttpClientModule} from "@angular/common/http";
 import { CalendarComponent } from './components/calendar/calendar.component';
 
 import { DatePipe } from '@angular/common';
+import { HeaderComponent } from './components/header/header.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     UserBlockComponent,
-    CalendarComponent
+    CalendarComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

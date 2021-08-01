@@ -45,6 +45,7 @@ export class CalendarComponent implements OnInit {
 
     // aici se face return la datele despre class dto, apoi se poti folosi pentru {{}}
     this.getClassesDTO();
+
   }
 
   private getUsers(){
@@ -106,8 +107,6 @@ export class CalendarComponent implements OnInit {
   };
 
 
-
-
   eventIsNow(thisdate: Date, hour:number):any{
     let cond: boolean=false;
     let times= setHours(thisdate, hour)
@@ -122,11 +121,5 @@ export class CalendarComponent implements OnInit {
     }
     return cond;
   }
-
-
-
-
-
-
 
 }

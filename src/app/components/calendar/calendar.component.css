@@ -1,6 +1,49 @@
-.col-sm .date{
-  border-style: solid;
-}
+
 .colorat{
   background-color: cadetblue;
+}
+.button {
+  background-color: cadetblue; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: auto;
+  font-size: 16px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+.button2:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.right{
+  float: right;
+}
+
+.centerizedh{
+  width: 700px;
+  margin: auto;
+  height: 100px;
+  text-align: center;
+}
+.left{
+  float: left;
+}
+.ore{
+  width: 50px;
+  border-left: 1px solid;
+  border-right: 1px solid;
+  height: 100px;
+}
+
+.days{
+  border: 1px solid;
+  background-color: cadetblue;
+}
+.cont{
+  top: auto;
 }
