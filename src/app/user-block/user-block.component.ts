@@ -17,7 +17,7 @@ export class UserBlockComponent implements OnInit {
   constructor(private userService: UserService, private classDTOService: ClassDTOService) { }
 
   ngOnInit(): void {
-      this.userService.getUsersList().subscribe(data =>{
+      /*this.userService.getUsersList().subscribe(data =>{
       this.users = data;
       let str = JSON.stringify(data);
       str = JSON.stringify(data, null, 4); // (Optional) beautiful indented output.
@@ -34,6 +34,8 @@ export class UserBlockComponent implements OnInit {
           //" " + data[0].endDate + " " +data[0].courseName + " " + data[0].roomName + " " + data[0].capacity + " " +  data[0].teacherLastName) ;
           console.log(str);
       });
+
+       */
 
     this.getUsers();
 
