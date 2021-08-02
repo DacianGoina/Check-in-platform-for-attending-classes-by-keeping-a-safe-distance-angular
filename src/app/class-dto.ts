@@ -6,8 +6,11 @@ export class ClassDTO {
     endDate:string;
     courseName:string;
     roomName:string;
+    teacherFirstName:string;
     teacherLastName:string;
     capacity:number;
+
+
 
     constructor(classId: number,
                 id : number,
@@ -15,9 +18,10 @@ export class ClassDTO {
                 startDate:string,
                 endDate:string,
                 capacity:number,
+                teacherLastName:string,
                 roomName:string,
                 courseName:string,
-                teacherLastName:string
+                teacherFirstName:string
                 ) {
         this.id = id;
         this.classroomId = classroomId;
@@ -26,6 +30,7 @@ export class ClassDTO {
         this.endDate = endDate;
         this.courseName = courseName;
         this.roomName = roomName;
+        this.teacherFirstName = teacherFirstName;
         this.teacherLastName = teacherLastName;
         this.capacity = capacity;
     }

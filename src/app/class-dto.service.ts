@@ -16,6 +16,9 @@ export class ClassDTOService {
     return this.httpClient.get<ClassDTO[]>(`${this.baseURL}`);
   }
 
+  getClassDTOById(id:number):Observable<ClassDTO>{
+    return this.httpClient.get<ClassDTO>(`${this.baseURL}/${id}`);
+  }
 
 
 

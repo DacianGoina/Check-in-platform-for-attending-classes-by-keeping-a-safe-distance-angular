@@ -8,9 +8,6 @@ import { Router } from '@angular/router';
 
 
 
-
-
-
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
@@ -104,6 +101,7 @@ export class CalendarComponent implements OnInit {
     roomName:'',
     teacherLastName:'',
     capacity:0,
+    teacherFirstName:''
 
   };
 
@@ -124,6 +122,10 @@ export class CalendarComponent implements OnInit {
   }
 
   clickedEvent(){
+  }
+
+  updateSchedule(id:number){
+    this.router.navigate(['class',id]);
 
   }
 }
