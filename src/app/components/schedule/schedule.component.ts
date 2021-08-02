@@ -12,7 +12,8 @@ import {ClassroomDetails} from "../../classroom-details";
   styleUrls: ['./schedule.component.css']
 })
 export class ScheduleComponent implements OnInit {
-  id:number = 0;
+  id:number =0;
+  cap:number= 1;
   classDTOobj:ClassDTO = new ClassDTO(0,0,0,'','',0,'','','','');
   courseNames:string[] | undefined;
   clDetails:ClassroomDetails[] | undefined;
@@ -20,6 +21,9 @@ export class ScheduleComponent implements OnInit {
   constructor( private route: ActivatedRoute,
                private classDTOService: ClassDTOService) {
 
+  }
+  giveNumToCap(num:number){
+    this.cap= num;
   }
 
   ngOnInit(): void {
@@ -45,6 +49,7 @@ export class ScheduleComponent implements OnInit {
       }
     });
 
+    this.giveNumToCap(8);
 
   }
 

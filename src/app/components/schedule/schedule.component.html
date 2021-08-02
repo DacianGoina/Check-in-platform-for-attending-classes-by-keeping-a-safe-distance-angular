@@ -9,21 +9,23 @@
 
     <div class="form-group">
       <label >Select classroom:  </label>
-      <select class="form-control" >
-        <option *ngFor="let room of clDetails" >{{room.name}}</option>
+      <select class="form-control"  >
+        <option *ngFor="let room of clDetails" (click)="giveNumToCap(room.capacity)">{{room.name}}</option>
       </select>
     </div>
 
-    <div class="form-group">
+  <!--  {{cap}} -->
+    <div class="form-group pad">
       <label>Start time:</label>
       <input type="datetime-local" id="startTime" name="startTime">
     </div>
 
-    <div class="form-group">
-      <label>Start time:</label>
+    <div class="form-group pad">
+      <label>Start time:  </label>
       <input type="datetime-local" id="endTime" name="endTime">
     </div>
-
+    <button type="submit" class="btn btn-primary button2">Enroll in class</button>
+    <button type="submit" class="btn btn-primary button2">Modify</button>
 
   </form>
 </div>

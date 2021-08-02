@@ -8,18 +8,18 @@
   <div class="row upper">
     <div class="ore days"></div>
     <div class="col days" *ngFor="let day of thisweek" >
-      <h3> {{ day | date }} </h3>
+      <b> {{ day | date:'fullDate' }} </b>
     </div>
   </div>
   <div class="row" *ngFor="let hour of hours" >
-    <div class="ore" >{{hour}}</div>
+    <div class="ore" >{{hour}}:00</div>
     <div class="col-sm emptys" *ngFor="let day of thisweek"   >
       <div class="colorat" *ngIf="eventIsNow(day, hour)"   routerLink="/class/{{event.id}}" (click) = "updateSchedule(event.id)">
-        <b>Coursename:</b> {{event.courseName}}
-        <b>Classroom</b> {{event.roomName}}
-        <b>Teacher: </b> {{event.teacherFirstName.charAt(0)+'. '+ event.teacherLastName}}
-        <b>Capacity:</b> {{event.capacity}} </div>
-
+        <b>{{event.courseName}}</b><br>
+        Classroom: <b >{{event.roomName}}</b><br>
+        Teacher: <b> {{event.teacherFirstName.charAt(0)+'. '+ event.teacherLastName}}</b><br>
+        Capacity: <b >{{event.capacity}} </b>
+      </div>
     </div>
   </div>
 </div>
