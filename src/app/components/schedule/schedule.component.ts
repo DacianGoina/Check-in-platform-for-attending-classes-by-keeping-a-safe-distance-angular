@@ -13,6 +13,7 @@ import {ClassDTO} from "../../class-dto";
 export class ScheduleComponent implements OnInit {
   id:number = 0;
   classDTOobj:ClassDTO = new ClassDTO(0,0,0,'','',0,'','','','');
+  //classDTOobj: ClassDTO | undefined;
   constructor( private route: ActivatedRoute,
                private classDTOService: ClassDTOService,
                private location: Location) {
