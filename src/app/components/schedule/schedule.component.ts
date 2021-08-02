@@ -5,6 +5,7 @@ import { Location } from '@angular/common';
 import { ClassDTOService } from "../../class-dto.service";
 import {ClassDTO} from "../../class-dto";
 import {count} from "rxjs/operators";
+import {ClassroomDetails} from "../../classroom-details";
 
 @Component({
   selector: 'app-schedule',
@@ -15,7 +16,7 @@ export class ScheduleComponent implements OnInit {
   id:number = 0;
   classDTOobj:ClassDTO = new ClassDTO(0,0,0,'','',0,'','','','');
   courseNames:string[] | undefined;
-  roomNames:string[] | undefined;
+  clDetails:ClassroomDetails[] | undefined;
   //classDTOobj: ClassDTO | undefined;
   constructor( private route: ActivatedRoute,
                private classDTOService: ClassDTOService,
@@ -30,11 +31,11 @@ export class ScheduleComponent implements OnInit {
       console.log(this.classDTOobj.courseName + " predat de" + this.classDTOobj.teacherFirstName + " " + this.classDTOobj.teacherLastName)
     },error => console.log(error));
 
-    this.classDTOService.getroomNames().subscribe(data=>{
-      this.roomNames = data;
+    this.classDTOService.getClassroomsDetails().subscribe(data=>{
+      this.clDetails = data;
       console.log("Nume sali:")
-      for (let i of this.roomNames) {
-        console.log(i);
+      for (let i of this.clDetails) {
+        console.log(i.name + " | " + i.capacity + " locuri");
       }
     });
 

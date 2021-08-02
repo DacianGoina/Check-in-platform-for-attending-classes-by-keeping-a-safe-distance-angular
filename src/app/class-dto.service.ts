@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {User} from "./user";
 import {ClassDTO} from "./class-dto";
+import {ClassroomDetails} from "./classroom-details";
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,7 @@ export class ClassDTOService {
   private baseURL:string = "http://localhost:8080/classdto";
   private courseNamesURL:string = "http://localhost:8080/course-names";
   private roomNamesURL:string = "http://localhost:8080/room-names";
+  private classroomsDetailsURL:string = "http://localhost:8080/cldetails";
   constructor(private httpClient: HttpClient) { }
   getClassDTOList() : Observable<ClassDTO[]>{
     return this.httpClient.get<ClassDTO[]>(`${this.baseURL}`);
@@ -30,6 +32,8 @@ export class ClassDTOService {
     return this.httpClient.get<string[]>(`${this.roomNamesURL}`);
   }
 
-
+  getClassroomsDetails():Observable<ClassroomDetails[]>{
+    return this.httpClient.get<ClassroomDetails[]>(`${this.classroomsDetailsURL}`);
+  }
 
 }
