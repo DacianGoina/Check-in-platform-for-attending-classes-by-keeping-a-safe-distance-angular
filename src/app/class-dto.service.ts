@@ -11,6 +11,8 @@ export class ClassDTOService {
 
 
   private baseURL:string = "http://localhost:8080/classdto";
+  private courseNamesURL:string = "http://localhost:8080/course-names";
+  private roomNamesURL:string = "http://localhost:8080/room-names";
   constructor(private httpClient: HttpClient) { }
   getClassDTOList() : Observable<ClassDTO[]>{
     return this.httpClient.get<ClassDTO[]>(`${this.baseURL}`);
@@ -18,6 +20,14 @@ export class ClassDTOService {
 
   getClassDTOById(id:number):Observable<ClassDTO>{
     return this.httpClient.get<ClassDTO>(`${this.baseURL}/${id}`);
+  }
+
+  getCourseNames():Observable<string[]>{
+    return this.httpClient.get<string[]>(`${this.courseNamesURL}`);
+  }
+
+  getroomNames():Observable<string[]>{
+    return this.httpClient.get<string[]>(`${this.roomNamesURL}`);
   }
 
 
