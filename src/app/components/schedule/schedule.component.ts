@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
 
 import { ClassDTOService } from "../../class-dto.service";
 import {ClassDTO} from "../../class-dto";
@@ -19,8 +18,7 @@ export class ScheduleComponent implements OnInit {
   clDetails:ClassroomDetails[] | undefined;
   //classDTOobj: ClassDTO | undefined;
   constructor( private route: ActivatedRoute,
-               private classDTOService: ClassDTOService,
-               private location: Location) {
+               private classDTOService: ClassDTOService) {
 
   }
 

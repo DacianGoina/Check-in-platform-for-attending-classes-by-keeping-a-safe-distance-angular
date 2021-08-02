@@ -1,15 +1,29 @@
-<div class=" cont">
+<div class=" container cont">
   <form>
     <div class="form-group">
-
+      <label >Select course:  </label>
+      <select class="form-control">
+        <option *ngFor="let course of courseNames" >{{course}}</option>
+      </select>
     </div>
+
     <div class="form-group">
-      <label >Select class room:  </label>
-      <select >
+      <label >Select classroom:  </label>
+      <select class="form-control" >
         <option *ngFor="let room of clDetails" >{{room.name}}</option>
       </select>
-
     </div>
+
+    <div class="form-group">
+      <label>Start time:</label>
+      <input type="datetime-local" id="startTime" name="startTime">
+    </div>
+
+    <div class="form-group">
+      <label>Start time:</label>
+      <input type="datetime-local" id="endTime" name="endTime">
+    </div>
+
 
   </form>
 </div>

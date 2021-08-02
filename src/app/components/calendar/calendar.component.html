@@ -4,8 +4,8 @@
 <button class="button button2 right" (click)="nextweek()">nextweek</button>
 </div>
 
-<div class="cont" >
-  <div class="row">
+<div class="cont container-fluid" >
+  <div class="row upper">
     <div class="ore days"></div>
     <div class="col days" *ngFor="let day of thisweek" >
       <h3> {{ day | date }} </h3>
