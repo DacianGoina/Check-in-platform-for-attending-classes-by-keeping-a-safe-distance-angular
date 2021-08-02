@@ -1,4 +1,19 @@
-<p> here will be the details of class</p>
-{{classDTOobj.courseName}}
-{{classDTOobj.roomName}}
-{{classDTOobj.teacherFirstName + " " + classDTOobj.teacherLastName}}
+<div class=" cont">
+  <form>
+    <div class="form-group">
+
+    </div>
+    <div class="form-group">
+      <label >Select class room:  </label>
+      <select >
+        <option *ngFor="let room of roomNames" >{{room}}</option>
+      </select>
+
+    </div>
+
+    <div class="form-group">
+      <label for="exampleFormControlTextarea1">Example textarea</label>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+  </form>
+</div>

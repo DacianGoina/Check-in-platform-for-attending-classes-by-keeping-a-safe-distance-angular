@@ -1,5 +1,3 @@
-<app-header></app-header>
-
 <div class="centerizedh" >
 <button class="button button2 left" (click)="lastweek()">lastweek</button>
  <b class="datetitle"> {{thisweek[0]| date}} - {{thisweek[6]| date}}</b>
@@ -9,7 +7,7 @@
 <div class="cont" >
   <div class="row">
     <div class="ore days"></div>
-    <div class="col-sm days" *ngFor="let day of thisweek" >
+    <div class="col days" *ngFor="let day of thisweek" >
       <h3> {{ day | date }} </h3>
     </div>
   </div>
@@ -17,21 +15,21 @@
     <div class="ore" >{{hour}}</div>
     <div class="col-sm emptys" *ngFor="let day of thisweek"   >
       <div class="colorat" *ngIf="eventIsNow(day, hour)"   routerLink="/class/{{event.id}}" (click) = "updateSchedule(event.id)">
-        Coursename:{{event.courseName}}
-        Classroom {{event.roomName}}
-        Teacher: {{event.teacherLastName}}
-        Capacity </div>
+        <b>Coursename:</b> {{event.courseName}}
+        <b>Classroom</b> {{event.roomName}}
+        <b>Teacher: </b> {{event.teacherFirstName.charAt(0)+'. '+ event.teacherLastName}}
+        <b>Capacity:</b> {{event.capacity}} </div>
 
     </div>
   </div>
 </div>
 
 
-
+<!--
 <div *ngFor="let classDTO of classDTOarray">
   <p>{{classDTO.courseName}}</p>
 </div>
-
+-->
 
 <!--
 <p *ngFor="let u of users">

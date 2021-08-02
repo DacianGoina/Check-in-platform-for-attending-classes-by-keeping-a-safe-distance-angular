@@ -99,9 +99,9 @@ export class CalendarComponent implements OnInit {
     endDate:'',
     courseName:'',
     roomName:'',
+    teacherFirstName: '',
     teacherLastName:'',
     capacity:0,
-    teacherFirstName:''
 
   };
 
