@@ -12,6 +12,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { ScheduleComponent } from './components/schedule/schedule.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AddScheduleComponent } from './components/add-schedule/add-schedule.component';
 
 
 
@@ -21,7 +22,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     UserBlockComponent,
     CalendarComponent,
     HeaderComponent,
-    ScheduleComponent
+    ScheduleComponent,
+    AddScheduleComponent
   ],
   imports: [
     BrowserAnimationsModule,

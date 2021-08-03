@@ -1,0 +1,34 @@
+<div class=" container cont">
+  <form>
+    <div class="form-group">
+      <label >Select course:  </label>
+      <select class="form-control" id = "selectCourse" >
+        <option *ngFor="let course of courseNames"  >{{course}}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label >Select classroom:  </label>
+      <select class="form-control"  id = "selectClassroom" [(ngModel)]="cap" name="cap">
+        <option *ngFor="let room of clDetails"  value="{{room.capacity}}" [innerText]="room.name">{{room.name}}</option>
+      </select>
+    </div>
+
+    <div class="form-group pad">
+      Classroom capacity: {{cap}}
+    </div>
+
+    <div class="form-group pad">
+      <label>Start time:</label>
+      <input type="datetime-local" id="startTime" name="startTime" [(ngModel)]="starttime">
+    </div>
+
+    <div class="form-group pad">
+      <label>End time:  </label>
+      <input type="datetime-local" id="endTime" name="endTime" [(ngModel)]="endtime">
+    </div>
+
+    <button  class="btn btn-primary button2" id = "updateBtn" >Create Schedule</button>
+
+  </form>
+</div>
