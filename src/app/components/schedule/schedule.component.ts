@@ -13,7 +13,8 @@ import {ClassroomDetails} from "../../classroom-details";
 })
 export class ScheduleComponent implements OnInit {
   id:number =0;
-  cap:number= 1;
+  cap: ClassroomDetails["capacity"]=0;
+
   starttime= new Date();
   endtime= new Date();
   classDTOobj:ClassDTO = new ClassDTO(0,0,0,'','',0,0,'','','','');
@@ -24,14 +25,12 @@ export class ScheduleComponent implements OnInit {
                private classDTOService: ClassDTOService) {
 
   }
-  giveNumToCap(num:number){
-    this.cap= num;
-  }
+
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
     this.classDTOService.getClassDTOById(this.id).subscribe(data =>{
-      this.classDTOobj = data;
+      this.classDTOobj = data; this.cap=this.classDTOobj.capacity;
       console.log(this.classDTOobj.courseName + " predat de" + this.classDTOobj.teacherFirstName + " " + this.classDTOobj.teacherLastName);
     },error => console.log(error));
 
@@ -52,21 +51,12 @@ export class ScheduleComponent implements OnInit {
       }
     });
 
-    this.giveNumToCap(8);
-
   }
 
   sendUpdates():void{
     // get element by ID pentru cele 2 selectoare
     let classroomName = (document.getElementById("selectClassroom")) as HTMLSelectElement;
     let courseName = (document.getElementById("selectCourse")) as HTMLSelectElement;
-
-    // cu astea de dateTime nu am gasit inca cum sa le scot ca obiecte (vezi ca si mai sus se foloseste acel "as")
-    // si aici probabil e ceva de ceva de genul ca sa obtinem valorile lor
-    // dar oricum, poate folosim altceva inafara de date time local
-    let startTime = (document.getElementById("startTime"));
-    let endTime = document.getElementById("endTime");
-
 
     // pentru a obtine valorile selectate (adica alea din varf)
     let aux1 = classroomName.options[classroomName.selectedIndex];
