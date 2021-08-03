@@ -2,15 +2,15 @@
   <form>
     <div class="form-group">
       <label >Select course:  </label>
-      <select class="form-control">
-        <option *ngFor="let course of courseNames" >{{course}}</option>
+      <select class="form-control" id = "selectCourse" >
+        <option *ngFor="let course of courseNames" [selected]="course === classDTOobj.courseName" >{{course}}</option>
       </select>
     </div>
 
     <div class="form-group">
       <label >Select classroom:  </label>
-      <select class="form-control"  >
-        <option *ngFor="let room of clDetails" (click)="giveNumToCap(room.capacity)">{{room.name}}</option>
+      <select class="form-control"  id = "selectClassroom">
+        <option *ngFor="let room of clDetails" [selected]="room.name === classDTOobj.roomName" (click)="giveNumToCap(room.capacity)">{{room.name}}</option>
       </select>
     </div>
 
@@ -24,8 +24,8 @@
       <label>End time:  </label>
       <input type="datetime-local" id="endTime" name="endTime">
     </div>
-    <button type="submit" class="btn btn-primary button2">Enroll in class</button>
-    <button type="submit" class="btn btn-primary button2">Update</button>
+    <button type="submit" class="btn btn-primary button2" id = "enrollBtn">Enroll in class</button>
+    <button  class="btn btn-primary button2" id = "updateBtn" (click)="sendUpdates()" >Update</button>
 
   </form>
 </div>
