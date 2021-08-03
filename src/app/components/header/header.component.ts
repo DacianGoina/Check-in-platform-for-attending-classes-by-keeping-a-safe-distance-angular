@@ -14,4 +14,13 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  userid: number= 0;
+
+  studentfunction(){
+    let foo = prompt('Please enter your id');
+    let bar = confirm('Confirm');
+   console.log(foo, bar);
+    this.userid=Number(foo);
+  }
+
 }
