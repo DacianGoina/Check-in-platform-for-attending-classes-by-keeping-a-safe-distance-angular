@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 import { ClassDTOService } from "../../class-dto.service";
 import {ClassDTO} from "../../class-dto";
@@ -19,7 +19,8 @@ export class ScheduleComponent implements OnInit {
   clDetails:ClassroomDetails[] | undefined;
   //classDTOobj: ClassDTO | undefined;
   constructor( private route: ActivatedRoute,
-               private classDTOService: ClassDTOService) {
+               private classDTOService: ClassDTOService,
+               private router:Router) {
 
   }
   giveNumToCap(num:number){
@@ -54,6 +55,8 @@ export class ScheduleComponent implements OnInit {
 
   }
 
+
+
   sendUpdates():void{
     // get element by ID pentru cele 2 selectoare
     let classroomName = (document.getElementById("selectClassroom")) as HTMLSelectElement;
@@ -62,9 +65,11 @@ export class ScheduleComponent implements OnInit {
     // cu astea de dateTime nu am gasit inca cum sa le scot ca obiecte (vezi ca si mai sus se foloseste acel "as")
     // si aici probabil e ceva de ceva de genul ca sa obtinem valorile lor
     // dar oricum, poate folosim altceva inafara de date time local
-    let startTime = (document.getElementById("startTime"));
-    let endTime = document.getElementById("endTime");
+    //let startTime = (document.getElementById("startTime"));
+    //let endTime = document.getElementById("endTime");
 
+    let startTime:string = "2021-07-30T08:00:00";
+    let endTime:string = "2021-07-30T09:30:00";
 
     // pentru a obtine valorile selectate (adica alea din varf)
     let aux1 = classroomName.options[classroomName.selectedIndex];
@@ -74,11 +79,22 @@ export class ScheduleComponent implements OnInit {
     let val2 = (<HTMLSelectElement><unknown>aux2).value;
 
     // aici doar le afisez
-    console.log("Nume clasa: " + val1);
+    console.log("Nume sala: " + val1);
     console.log("Nume curs: " + val2);
-    //console.log(startTime.innerText);
+    console.log("Start time: " + startTime);
+    console.log("End time: " + endTime);
     console.log("Planner id: " + this.classDTOobj.id);
+
+    let currentId = 5;
+    let newPlanner = new ClassDTO(0,this.classDTOobj.id,0,startTime,endTime,0,0,'',val1,val2,'');
+
+    this.classDTOService.updateSchedule(currentId,newPlanner).subscribe(data =>{
+      this.goToMainPage();
+    }, error => console.log(error));
   }
 
+  goToMainPage(){
+    this.router.navigate(['/class']);
+  }
 
 }
