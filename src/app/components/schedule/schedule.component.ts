@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 import { ClassDTOService } from "../../class-dto.service";
 import {ClassDTO} from "../../class-dto";
@@ -22,7 +22,8 @@ export class ScheduleComponent implements OnInit {
   clDetails:ClassroomDetails[] | undefined;
   //classDTOobj: ClassDTO | undefined;
   constructor( private route: ActivatedRoute,
-               private classDTOService: ClassDTOService) {
+               private classDTOService: ClassDTOService,
+               private router: Router) {
 
   }
 
@@ -60,7 +61,7 @@ export class ScheduleComponent implements OnInit {
 
     // pentru a obtine valorile selectate (adica alea din varf)
     let aux1 = classroomName.options[classroomName.selectedIndex];
-    let val1 = (<HTMLSelectElement><unknown>aux1).value;
+    let val1 = (<HTMLSelectElement><unknown>aux1).innerText;
 
     let aux2 = courseName.options[courseName.selectedIndex];
     let val2 = (<HTMLSelectElement><unknown>aux2).value;
@@ -77,7 +78,18 @@ export class ScheduleComponent implements OnInit {
     console.log("Start time: " + startTimeVal);
     console.log("End time: " + endTimeVal);
     console.log("Planner id: " + this.classDTOobj.id);
+
+    let currentId = this.classDTOobj.id;
+    let newPlanner = new ClassDTO(0,this.classDTOobj.id,0,startTimeVal,endTimeVal,0,0,'',val1,val2,'');
+
+    this.classDTOService.updateSchedule(currentId,newPlanner).subscribe(data =>{
+      this.goToMainPage();
+    }, error => console.log(error));
+
   }
 
+  goToMainPage(){
+    this.router.navigate(['/class']);
+  }
 
 }

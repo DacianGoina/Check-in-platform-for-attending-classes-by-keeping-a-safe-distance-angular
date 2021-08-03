@@ -10,7 +10,7 @@
     <div class="form-group">
       <label >Select classroom:  </label>
       <select class="form-control"  id = "selectClassroom" [(ngModel)]="cap" name="cap">
-        <option *ngFor="let room of clDetails" [selected]="room.name === classDTOobj.roomName" value="{{room.capacity}}">{{room.name}}</option>
+        <option *ngFor="let room of clDetails" [selected]="room.name === classDTOobj.roomName" value="{{room.capacity}}" [innerText]="room.name">{{room.name}}</option>
       </select>
     </div>
 
