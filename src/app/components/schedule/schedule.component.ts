@@ -66,11 +66,16 @@ export class ScheduleComponent implements OnInit {
     let val2 = (<HTMLSelectElement><unknown>aux2).value;
 
 
+    let startTimeVal = new Date(this.starttime).toISOString();
+    let endTimeVal = new Date(this.endtime).toISOString();
+
     // aici doar le afisez
     console.log("Nume clasa: " + val1);
     console.log("Nume curs: " + val2);
-    console.log("Start time: " + this.starttime);
-    console.log("End time: " + this.endtime);
+    //console.log("Start time: " + this.starttime);
+    //console.log("End time: " + this.endtime);
+    console.log("Start time: " + startTimeVal);
+    console.log("End time: " + endTimeVal);
     console.log("Planner id: " + this.classDTOobj.id);
   }
 
