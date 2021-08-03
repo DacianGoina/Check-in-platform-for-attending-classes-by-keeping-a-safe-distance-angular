@@ -92,4 +92,10 @@ export class ScheduleComponent implements OnInit {
     this.router.navigate(['/class']);
   }
 
+  isShowDiv = true;
+
+  toggleDisplayDiv() {
+    this.isShowDiv = !this.isShowDiv;
+  }
+
 }
