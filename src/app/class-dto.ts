@@ -8,6 +8,7 @@ export class ClassDTO {
     roomName:string;
     teacherFirstName:string;
     teacherLastName:string;
+    studentsNumber:number;
     capacity:number;
 
 
@@ -18,6 +19,7 @@ export class ClassDTO {
                 startDate:string,
                 endDate:string,
                 capacity:number,
+                studentsNumber:number,
                 teacherLastName:string,
                 roomName:string,
                 courseName:string,
@@ -32,6 +34,7 @@ export class ClassDTO {
         this.roomName = roomName;
         this.teacherFirstName = teacherFirstName;
         this.teacherLastName = teacherLastName;
+        this.studentsNumber = studentsNumber;
         this.capacity = capacity;
     }
 }

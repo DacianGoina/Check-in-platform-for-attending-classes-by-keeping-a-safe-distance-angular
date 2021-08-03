@@ -14,7 +14,7 @@ import {ClassroomDetails} from "../../classroom-details";
 export class ScheduleComponent implements OnInit {
   id:number =0;
   cap:number= 1;
-  classDTOobj:ClassDTO = new ClassDTO(0,0,0,'','',0,'','','','');
+  classDTOobj:ClassDTO = new ClassDTO(0,0,0,'','',0,0,'','','','');
   courseNames:string[] | undefined;
   clDetails:ClassroomDetails[] | undefined;
   //classDTOobj: ClassDTO | undefined;

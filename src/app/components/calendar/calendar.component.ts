@@ -101,6 +101,7 @@ export class CalendarComponent implements OnInit {
     roomName:'',
     teacherFirstName: '',
     teacherLastName:'',
+    studentsNumber:0,
     capacity:0,
 
   };
