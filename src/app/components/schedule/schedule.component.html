@@ -17,12 +17,12 @@
   <!--  {{cap}} -->
     <div class="form-group pad">
       <label>Start time:</label>
-      <input type="datetime-local" id="startTime" name="startTime">
+      <input type="datetime-local" id="startTime" name="startTime" [(ngModel)]="starttime">
     </div>
 
     <div class="form-group pad">
       <label>End time:  </label>
-      <input type="datetime-local" id="endTime" name="endTime">
+      <input type="datetime-local" id="endTime" name="endTime" [(ngModel)]="endtime">
     </div>
     <button type="submit" class="btn btn-primary button2" id = "enrollBtn">Enroll in class</button>
     <button  class="btn btn-primary button2" id = "updateBtn" (click)="sendUpdates()" >Update</button>

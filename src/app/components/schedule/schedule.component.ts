@@ -14,6 +14,8 @@ import {ClassroomDetails} from "../../classroom-details";
 export class ScheduleComponent implements OnInit {
   id:number =0;
   cap:number= 1;
+  starttime= new Date();
+  endtime= new Date();
   classDTOobj:ClassDTO = new ClassDTO(0,0,0,'','',0,0,'','','','');
   courseNames:string[] | undefined;
   clDetails:ClassroomDetails[] | undefined;
@@ -73,10 +75,12 @@ export class ScheduleComponent implements OnInit {
     let aux2 = courseName.options[courseName.selectedIndex];
     let val2 = (<HTMLSelectElement><unknown>aux2).value;
 
+
     // aici doar le afisez
     console.log("Nume clasa: " + val1);
     console.log("Nume curs: " + val2);
-    //console.log(startTime.innerText);
+    console.log("Start time: " + this.starttime);
+    console.log("End time: " + this.endtime);
     console.log("Planner id: " + this.classDTOobj.id);
   }
 

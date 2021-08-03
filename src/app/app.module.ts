@@ -10,6 +10,9 @@ import { CalendarComponent } from './components/calendar/calendar.component';
 import { DatePipe } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
 import { ScheduleComponent } from './components/schedule/schedule.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 @NgModule({
@@ -21,9 +24,12 @@ import { ScheduleComponent } from './components/schedule/schedule.component';
     ScheduleComponent
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
