@@ -9,12 +9,15 @@
 
     <div class="form-group">
       <label >Select classroom:  </label>
-      <select class="form-control"  id = "selectClassroom">
-        <option *ngFor="let room of clDetails" [selected]="room.name === classDTOobj.roomName" (click)="giveNumToCap(room.capacity)">{{room.name}}</option>
+      <select class="form-control"  id = "selectClassroom" [(ngModel)]="cap" name="cap">
+        <option *ngFor="let room of clDetails" [selected]="room.name === classDTOobj.roomName" value="{{room.capacity}}">{{room.name}}</option>
       </select>
     </div>
 
-  <!--  {{cap}} -->
+    <div class="form-group pad">
+      Classroom capacity: {{cap}}
+    </div>
+
     <div class="form-group pad">
       <label>Start time:</label>
       <input type="datetime-local" id="startTime" name="startTime" [(ngModel)]="starttime">
