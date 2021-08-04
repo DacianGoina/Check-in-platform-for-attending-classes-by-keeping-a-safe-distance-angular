@@ -89,7 +89,7 @@ export class ScheduleComponent implements OnInit {
   }
 
   delete(){
-    let bar = confirm('are you sure?');
+    let bar = confirm('Ești sigur?');
     console.log( bar);
   }
 

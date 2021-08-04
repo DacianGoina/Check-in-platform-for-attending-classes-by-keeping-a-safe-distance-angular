@@ -17,8 +17,8 @@ export class HeaderComponent implements OnInit {
   userid: number= 0;
 
   studentfunction(){
-    let foo = prompt('Please enter your id');
-    let bar = confirm('Confirm');
+    let foo = prompt('Te rugăm să îți introduci id-ul');
+    let bar = confirm('Confirmi?');
    console.log(foo, bar);
     this.userid=Number(foo);
   }
