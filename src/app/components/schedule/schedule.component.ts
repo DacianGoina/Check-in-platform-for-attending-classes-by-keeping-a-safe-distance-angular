@@ -88,8 +88,14 @@ export class ScheduleComponent implements OnInit {
 
   }
 
-  delete(){
+  deleteSchedule(){
+    let id = this.classDTOobj.id;
+    console.log("Se va sterge schedule cu id: " + id);
     let bar = confirm('are you sure?');
+    this.classDTOService.deleteSchedule(id).subscribe(data=>{
+      console.log(data);
+      this.goToMainPage();
+    });
     console.log( bar);
   }
 
