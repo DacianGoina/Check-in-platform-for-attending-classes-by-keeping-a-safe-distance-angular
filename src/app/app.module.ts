@@ -13,7 +13,7 @@ import { ScheduleComponent } from './components/schedule/schedule.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddScheduleComponent } from './components/add-schedule/add-schedule.component';
-
+import {LoggedUserServiceService} from "./logged-user.service";
 
 
 @NgModule({
@@ -33,7 +33,7 @@ import { AddScheduleComponent } from './components/add-schedule/add-schedule.com
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [DatePipe],
+  providers: [DatePipe, LoggedUserServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

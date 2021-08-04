@@ -5,6 +5,8 @@ import { ClassDTOService } from "../../class-dto.service";
 import {ClassDTO} from "../../class-dto";
 import {count} from "rxjs/operators";
 import {ClassroomDetails} from "../../classroom-details";
+import {LoggedUserServiceService} from "../../logged-user.service";
+
 
 @Component({
   selector: 'app-schedule',
@@ -23,7 +25,8 @@ export class ScheduleComponent implements OnInit {
   //classDTOobj: ClassDTO | undefined;
   constructor( private route: ActivatedRoute,
                private classDTOService: ClassDTOService,
-               private router: Router) {
+               private router: Router,
+               private usertype: LoggedUserServiceService) {
 
   }
 
@@ -109,5 +112,11 @@ export class ScheduleComponent implements OnInit {
   toggleDisplayDiv() {
     this.isShowDiv = !this.isShowDiv;
   }
+
+
+
+  isShowButton = !(this.usertype.getUserType() == 'ADMIN' || this.usertype.getUserType() == 'TEACHER');
+
+  isStudentButton= !(this.usertype.getUserType()=='STUDENT')
 
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {LoggedUserServiceService} from "../../logged-user.service";
 
 @Component({
   selector: 'app-header',
@@ -7,19 +8,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
-
-  user : string = 'GUEST';
-
-  ngOnInit(): void {
+  constructor(private usertype: LoggedUserServiceService) {
+    this.selectedUserType= this.usertype.getUserType();
+    this.selectedUserId= this.usertype.getUserId();
   }
 
-  userid: number= 0;
+  selectedUserType= '';
+  selectedUserId= 0;
+
+  ngOnInit(): void {
+
+  }
+
+
+  change(type:string){
+    this.usertype.changeUserType(type);
+    this.selectedUserType=this.usertype.getUserType();
+  }
+
+
 
   studentfunction(){
     let foo = prompt('Te rugăm să îți introduci id-ul');
    console.log(foo);
-    this.userid=Number(foo);
+    this.usertype.changeUserId(Number(foo));
+    this.selectedUserId=this.usertype.getUserId()
   }
+
 
 }

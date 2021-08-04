@@ -7,7 +7,6 @@ import {ClassDTOService} from "../../class-dto.service";
 import { Router } from '@angular/router';
 
 
-
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
@@ -19,7 +18,9 @@ export class CalendarComponent implements OnInit {
   users:User[] | undefined;
   classDTOarray:ClassDTO[] | undefined;
 
-  constructor(private userService: UserService, private classDTOService: ClassDTOService, public router: Router) {
+  constructor(private userService: UserService,
+              private classDTOService: ClassDTOService,
+              public router: Router) {
 
 
   }
@@ -63,7 +64,7 @@ export class CalendarComponent implements OnInit {
   today: Date= new Date();
   first= this.today.getDate()-this.today.getDay();
   thisweek=this.getweek();
-  dayclick:any;
+
 
   getweek(){
    return [new Date(this.today.setDate(this.first)),
@@ -86,9 +87,7 @@ export class CalendarComponent implements OnInit {
     this.thisweek=this.getweek();
   }
 
-  clickedhour(dayClicked: Date, hourClicked: any){
-    this.dayclick=setHours(dayClicked, hourClicked);
-  }
+
 
 
   event:ClassDTO={
@@ -122,8 +121,7 @@ export class CalendarComponent implements OnInit {
     return cond;
   }
 
-  clickedEvent(){
-  }
+
 
   updateSchedule(id:number){
     this.router.navigate(['class',id]);
