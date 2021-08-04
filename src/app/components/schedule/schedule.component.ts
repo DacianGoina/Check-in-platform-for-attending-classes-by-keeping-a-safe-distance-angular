@@ -88,6 +88,11 @@ export class ScheduleComponent implements OnInit {
 
   }
 
+  delete(){
+    let bar = confirm('are you sure?');
+    console.log( bar);
+  }
+
   goToMainPage(){
     this.router.navigate(['/class']);
   }
