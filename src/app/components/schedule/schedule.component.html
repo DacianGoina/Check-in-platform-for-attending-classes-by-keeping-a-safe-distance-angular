@@ -39,22 +39,22 @@
 
 <div class="container cont1" [hidden]="!isShowDiv">
   <div class="form-group pad">
-    Course: <h2>{{classDTOobj.courseName}}</h2>
+    Numele clasei: <h2>{{classDTOobj.courseName}}</h2>
   </div>
   <div class="form-group pad">
-    Classroom: <b>{{classDTOobj.roomName}}</b>
+    Sala: <b>{{classDTOobj.roomName}}</b>
   </div>
   <div class="form-group pad">
-    Teacher name: <b>{{classDTOobj.teacherFirstName}} {{classDTOobj.teacherLastName}}</b>
+    Numele profesorului: <b>{{classDTOobj.teacherFirstName}} {{classDTOobj.teacherLastName}}</b>
   </div>
   <div class="form-group pad">
-    Classroom full capacity:{{classDTOobj.capacity}}
+    Capacitatea maximă a sălii:{{classDTOobj.capacity}}
   </div>
   <div class="form-group pad">
-    There are already {{classDTOobj.studentsNumber}} students enrolled
+    Sunt {{classDTOobj.studentsNumber}} înscrisi
   </div>
   <div class="form-group pad">
-    On {{classDTOobj.startDate| date: 'fullDate' }} from {{classDTOobj.startDate| date: 'hh:mm'}} to {{classDTOobj.endDate| date : 'hh:mm'}}
+    În data de {{classDTOobj.startDate| date }} de la {{classDTOobj.startDate| date: 'hh:mm'}} la {{classDTOobj.endDate| date : 'hh:mm'}}
   </div>
   <div class="form-group pad2 ">
     <button type="submit" class="btn btn-info" id = "enrollBtn">Enroll in class</button>
