@@ -27,10 +27,10 @@
 
     <div class="form-group pad">
       <label>End time:  </label>
-      <input type="datetime-local" id="endTime" name="endTime" [(ngModel)]="endtime">
+      <input type="datetime-local" id="endTime" name="endTime" [(ngModel)]="endtime" required="required">
     </div>
     <div class="form-group pad2 ">
-      <button  class="btn btn-info buto" id = "updateBtn" (click)="sendUpdates()" >Update</button>
+      <button  class="btn btn-warning buto" id = "updateBtn" (click)="sendUpdates()" >Update</button>
       <button class="btn btn-info buto2 " (click)=toggleDisplayDiv() >Cancel</button>
       <button class="btn btn-danger toright" (click)="deleteSchedule()" >Delete</button>
     </div>
@@ -54,7 +54,7 @@
     Sunt {{classDTOobj.studentsNumber}} înscrisi
   </div>
   <div class="form-group pad">
-    În data de {{classDTOobj.startDate| date }} de la {{classDTOobj.startDate| date: 'hh:mm'}} la {{classDTOobj.endDate| date : 'hh:mm'}}
+    Din {{classDTOobj.startDate| date:   'short': 'locale'}} în {{classDTOobj.endDate| date:'short':'locale'}}
   </div>
   <div class="form-group pad2 ">
     <button type="submit" class="btn btn-info" id = "enrollBtn">Enroll in class</button>
