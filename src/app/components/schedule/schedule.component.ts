@@ -96,6 +96,7 @@ export class ScheduleComponent implements OnInit {
       console.log(data);
       this.goToMainPage();
     });
+
     console.log( bar);
   }
 
