@@ -12,7 +12,7 @@ import {ClassDTOService} from "../../class-dto.service";
 export class AddScheduleComponent implements OnInit {
 
   cap: ClassroomDetails["capacity"]=0;
-
+  //newClassDTOobj:ClassDTO = new ClassDTO(0,0,0,'','',0,0,'','','','');
   starttime= new Date();
   endtime= new Date();
   courseNames:string[] | undefined;
@@ -44,6 +44,39 @@ export class AddScheduleComponent implements OnInit {
       }
     });
 
+  }
+
+  goToMainPage(){
+    this.router.navigate(['/class']);
+  }
+
+  createSchedule(){
+
+    let classroomName = (document.getElementById("selectClassroom")) as HTMLSelectElement;
+    let courseName = (document.getElementById("selectCourse")) as HTMLSelectElement;
+
+    // pentru a obtine valorile selectate (adica alea din varf)
+    let aux1 = classroomName.options[classroomName.selectedIndex];
+    let val1 = (<HTMLSelectElement><unknown>aux1).innerText;
+
+    let aux2 = courseName.options[courseName.selectedIndex];
+    let val2 = (<HTMLSelectElement><unknown>aux2).value;
+
+
+    let startTimeVal = new Date(this.starttime).toISOString();
+    let endTimeVal = new Date(this.endtime).toISOString();
+
+
+    console.log("Start time:" + startTimeVal);
+    console.log("End time: "+ endTimeVal);
+
+
+    let newPlanner = new ClassDTO(0,0,0,startTimeVal,endTimeVal,0,0,'',val1,val2,'');
+
+    this.classDTOService.createSchedule(newPlanner).subscribe(data =>{
+      console.log(data);
+      this.goToMainPage();
+    },error => {console.log(error)});
   }
 
 }

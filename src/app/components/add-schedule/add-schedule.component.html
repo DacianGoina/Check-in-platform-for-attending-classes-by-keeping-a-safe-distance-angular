@@ -28,7 +28,7 @@
       <input type="datetime-local" id="endTime" name="endTime" [(ngModel)]="endtime">
     </div>
 
-    <button  class="btn btn-primary button2" id = "updateBtn" >Create Schedule</button>
+    <button  class="btn btn-primary button2" id = "updateBtn" (click)="createSchedule()"  >Create Schedule</button>
 
   </form>
 </div>

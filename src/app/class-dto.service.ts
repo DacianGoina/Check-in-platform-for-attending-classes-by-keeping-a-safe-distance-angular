@@ -16,6 +16,7 @@ export class ClassDTOService {
   private roomNamesURL:string = "http://localhost:8080/room-names";
   private classroomsDetailsURL:string = "http://localhost:8080/cldetails";
   private RESTclassDTOURL:string = "http://localhost:8080/class";
+  private POSTclassDTOURL:string = "http://localhost:8080/addSchedule";
   constructor(private httpClient: HttpClient) { }
   getClassDTOList() : Observable<ClassDTO[]>{
     return this.httpClient.get<ClassDTO[]>(`${this.baseURL}`);
@@ -43,6 +44,10 @@ export class ClassDTOService {
 
   deleteSchedule(id:number):Observable<Object>{
     return this.httpClient.delete(`${this.RESTclassDTOURL}/${id}`);
+  }
+
+  createSchedule(newPlanner:ClassDTO):Observable<Object>{
+    return this.httpClient.post(`${this.POSTclassDTOURL}`,newPlanner);
   }
 
 }
