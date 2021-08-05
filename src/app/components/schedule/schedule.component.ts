@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 
 import { ClassDTOService } from "../../class-dto.service";
 import {ClassDTO} from "../../class-dto";
@@ -33,26 +33,36 @@ export class ScheduleComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
+    /*this.id = 11;
+    this.route.params.subscribe(
+        params => {
+          const myid = +params['id'];
+          console.log("!!ID INSIDE: " + myid);
+          this.id = myid;
+        }
+    );*/
+    console.log("!!!ID OUTSIDE: " + this.id);
     this.classDTOService.getClassDTOById(this.id).subscribe(data =>{
       this.classDTOobj = data; this.cap=this.classDTOobj.capacity;
       console.log(this.classDTOobj.courseName + " predat de" + this.classDTOobj.teacherFirstName + " " + this.classDTOobj.teacherLastName);
     },error => console.log(error));
 
+
     this.classDTOService.getClassroomsDetails().subscribe(data=>{
       this.clDetails = data;
-      console.log("Nume sali:")
+      /*console.log("Nume sali:")
       for (let i of this.clDetails) {
         console.log(i.name + " | " + i.capacity + " locuri");
-      }
+      }*/
       console.log("Inside get clDetails: " + this.classDTOobj.studentsNumber);
     });
 
     this.classDTOService.getCourseNames().subscribe(data =>{
       this.courseNames = data;
-      console.log("Nume cursuri:")
+      /*console.log("Nume cursuri:")
       for (let i of this.courseNames) {
         console.log(i);
-      }
+      }*/
     });
 
   }

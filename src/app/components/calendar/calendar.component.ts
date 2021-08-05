@@ -124,7 +124,9 @@ export class CalendarComponent implements OnInit {
 
 
   updateSchedule(id:number){
-    this.router.navigate(['class',id]);
+    //this.router.navigate(['class',id]);
+    this.router.navigateByUrl('/', {skipLocationChange: true})
+        .then(()=>this.router.navigate(['class',id]));
   }
 
 
