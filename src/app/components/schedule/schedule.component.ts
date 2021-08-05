@@ -6,6 +6,8 @@ import {ClassDTO} from "../../class-dto";
 import {count} from "rxjs/operators";
 import {ClassroomDetails} from "../../classroom-details";
 import {LoggedUserServiceService} from "../../logged-user.service";
+import {RepartitionDTO} from "../../repartition-dto";
+import {RepartitionDTOService} from "../../repartition-dto.service";
 
 
 @Component({
@@ -22,11 +24,13 @@ export class ScheduleComponent implements OnInit {
   classDTOobj:ClassDTO = new ClassDTO(0,0,0,'','',0,0,'','','','');
   courseNames:string[] | undefined;
   clDetails:ClassroomDetails[] | undefined;
+  enrolledStudentsIDs:RepartitionDTO[] | undefined;
   //classDTOobj: ClassDTO | undefined;
   constructor( private route: ActivatedRoute,
                private classDTOService: ClassDTOService,
                private router: Router,
-               private usertype: LoggedUserServiceService) {
+               private usertype: LoggedUserServiceService,
+               private repartitionService: RepartitionDTOService) {
 
   }
 
@@ -50,20 +54,17 @@ export class ScheduleComponent implements OnInit {
 
     this.classDTOService.getClassroomsDetails().subscribe(data=>{
       this.clDetails = data;
-      /*console.log("Nume sali:")
-      for (let i of this.clDetails) {
-        console.log(i.name + " | " + i.capacity + " locuri");
-      }*/
       console.log("Inside get clDetails: " + this.classDTOobj.studentsNumber);
     });
 
     this.classDTOService.getCourseNames().subscribe(data =>{
       this.courseNames = data;
-      /*console.log("Nume cursuri:")
-      for (let i of this.courseNames) {
-        console.log(i);
-      }*/
     });
+
+    // Array cu id-urile studentilor inscrisi in acest schedule
+    this.repartitionService.getRepatitionDTO(this.id).subscribe(data=>{
+      this.enrolledStudentsIDs = data;
+    })
 
   }
 
