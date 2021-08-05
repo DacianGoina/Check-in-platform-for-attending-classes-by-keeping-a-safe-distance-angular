@@ -44,7 +44,7 @@ export class ScheduleComponent implements OnInit {
     console.log("!!!ID OUTSIDE: " + this.id);
     this.classDTOService.getClassDTOById(this.id).subscribe(data =>{
       this.classDTOobj = data; this.cap=this.classDTOobj.capacity;
-      console.log(this.classDTOobj.courseName + " predat de" + this.classDTOobj.teacherFirstName + " " + this.classDTOobj.teacherLastName);
+      console.log(this.classDTOobj.courseName + " predat de" + this.classDTOobj.teacherFirstName + " " + this.classDTOobj.teacherLastName + " " + this.classDTOobj.studentsNumber);
     },error => console.log(error));
 
 

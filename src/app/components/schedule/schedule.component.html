@@ -51,7 +51,7 @@
     Capacitatea maximă a sălii:{{classDTOobj.capacity}}
   </div>
   <div class="form-group pad">
-    Sunt {{0}} studenti înscrisi
+    Sunt {{this.classDTOobj.studentsNumber}} studenți înscrisi și {{this.classDTOobj.capacity-this.classDTOobj.studentsNumber}} locuri libere
   </div>
   <div class="form-group pad">
     Din {{classDTOobj.startDate| date:   'short': 'locale'}} în {{classDTOobj.endDate| date:'short':'locale'}}
