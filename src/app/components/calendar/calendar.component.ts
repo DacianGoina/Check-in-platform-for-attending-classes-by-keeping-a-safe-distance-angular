@@ -64,14 +64,11 @@ export class CalendarComponent implements OnInit {
       this.classDTOarray = data;
     });
   }
-
-  redirectare(id:number){
-    if(this.userlogged.getUserType()=='STUDENT'){
-      this.router.navigate(['enroll', id]);
-    }else{
-      this.router.navigate(['class', id]);
-    }
+  isStudent():boolean{
+    return this.userlogged.getUserType()=='STUDENT';
   }
+
+
 
 //obtinerea zilelor saptamanii
   today: Date= new Date();
