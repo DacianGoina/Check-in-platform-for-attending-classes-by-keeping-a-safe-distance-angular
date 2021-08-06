@@ -1,7 +1,7 @@
 <ul>
   <li routerLink="/class" class="active" >Home</li>
   <li (click)="change('GUEST')" routerLink="/class">Guest</li>
-  <li (click)="change('STUDENT'); studentfunction()" routerLink="/class">Student</li>
+  <li (click)=" studentfunction()" routerLink="/class">Student</li>
   <li (click)="change('TEACHER')" routerLink="/class">Teacher</li>
   <li (click)="change('ADMIN')" routerLink="/class">Admin</li>
   <li class="toright">You are logged in as {{selectedUserType}}</li>

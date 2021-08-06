@@ -108,6 +108,7 @@ export class ScheduleComponent implements OnInit {
     let currentId = this.classDTOobj.id;
     let newPlanner = new ClassDTO(0,this.classDTOobj.id,0,startTimeVal,endTimeVal,0,0,'',val1,val2,'');
 
+    window.alert('update succescful');
     this.classDTOService.updateSchedule(currentId,newPlanner).subscribe(data =>{
       this.goToMainPage();
     }, error => console.log(error));
@@ -117,13 +118,14 @@ export class ScheduleComponent implements OnInit {
   deleteSchedule(){
     let id = this.classDTOobj.id;
     console.log("Se va sterge schedule cu id: " + id);
-    let bar = confirm('are you sure?');
+    let bar = confirm('esti sigur?');
+    console.log( bar);
     this.classDTOService.deleteSchedule(id).subscribe(data=>{
       console.log(data);
+      window.alert('Schedule deleted with succes')
       this.goToMainPage();
     });
 
-    console.log( bar);
   }
 
   goToMainPage(){
@@ -152,12 +154,6 @@ export class ScheduleComponent implements OnInit {
     return false;
   }
 
-  isStudent(user:LoggedUserServiceService):boolean{
-    if(user.getUserType() === "STUDENT")
-      return true;
-    return false;
-  }
-
   // This method run when enrollBtn is clicked
   enrollInClass(){
     // already enrolled, unenrolled now!
@@ -168,7 +164,7 @@ export class ScheduleComponent implements OnInit {
       this.enrollBtn.innerText = "Unenroll from class";
     }
 
-    if(this.isEnrolled(this.currentUser) == false){
+    if(!this.isEnrolled(this.currentUser)){
       let newRepartition = new RepartitionDTO(this.currentUser.getUserId(),this.id);
       this.repartitionService.createRepartition(this.id, newRepartition).subscribe(data=>{
         console.log(data);
