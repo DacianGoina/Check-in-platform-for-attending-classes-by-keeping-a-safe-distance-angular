@@ -16,8 +16,8 @@ export class RepartitionDTOService {
   constructor(private httpClient: HttpClient) { }
 
 
-  getRepatitionDTO(plannerId:number): Observable<RepartitionDTO[]>{
-    return this.httpClient.get<RepartitionDTO[]>(`${this.GETRepartitionDTOURL}/${plannerId}`);
+  getRepatitionDTO(plannerId:number): Observable<number[]>{
+    return this.httpClient.get<number[]>(`${this.GETRepartitionDTOURL}/${plannerId}`);
   }
 
   createRepartition(plannerId: number, newRepartition:RepartitionDTO):Observable<Object>{

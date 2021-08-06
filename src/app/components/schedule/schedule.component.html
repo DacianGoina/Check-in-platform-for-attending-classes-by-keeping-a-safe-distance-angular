@@ -57,7 +57,7 @@
     Din {{classDTOobj.startDate| date:   'short': 'locale'}} în {{classDTOobj.endDate| date:'short':'locale'}}
   </div>
   <div class="form-group pad2 ">
-    <button type="submit" class="btn btn-info" id = "enrollBtn" [hidden]="isStudentButton">Enroll in class</button>
+    <button type="submit" class="btn btn-info" id = "enrollBtn" [hidden]="isStudentButton" (click) = "enrollInClass()">Enroll in class</button>
      <button class="btn btn-info toright" (click)=toggleDisplayDiv() [hidden]="isShowButton">Modify Details</button>
   </div>
 </div>

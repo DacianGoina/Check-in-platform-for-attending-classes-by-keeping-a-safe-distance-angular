@@ -24,18 +24,22 @@ export class ScheduleComponent implements OnInit {
   classDTOobj:ClassDTO = new ClassDTO(0,0,0,'','',0,0,'','','','');
   courseNames:string[] | undefined;
   clDetails:ClassroomDetails[] | undefined;
-  enrolledStudentsIDs:RepartitionDTO[] | undefined;
-  //classDTOobj: ClassDTO | undefined;
+  enrolledStudentsIDs:number[] | undefined;
+
+  enrollBtn = <HTMLAudioElement>document.getElementById("enrollBtn");
+
+
   constructor( private route: ActivatedRoute,
                private classDTOService: ClassDTOService,
                private router: Router,
-               private usertype: LoggedUserServiceService,
+               private currentUser: LoggedUserServiceService,
                private repartitionService: RepartitionDTOService) {
 
   }
 
 
   ngOnInit(): void {
+
     this.id = this.route.snapshot.params['id'];
     /*this.id = 11;
     this.route.params.subscribe(
@@ -64,7 +68,15 @@ export class ScheduleComponent implements OnInit {
     // Array cu id-urile studentilor inscrisi in acest schedule
     this.repartitionService.getRepatitionDTO(this.id).subscribe(data=>{
       this.enrolledStudentsIDs = data;
-    })
+    });
+
+    // set initial value for enrollBtn
+    if(this.isEnrolled(this.currentUser)){
+      this.enrollBtn.innerText = "Unenroll from class";
+    }
+    else{
+      this.enrollBtn.innerText = "Enroll in class";
+    }
 
   }
 
@@ -126,8 +138,46 @@ export class ScheduleComponent implements OnInit {
 
 
 
-  isShowButton = !(this.usertype.getUserType() == 'ADMIN' || this.usertype.getUserType() == 'TEACHER');
+  isShowButton = !(this.currentUser.getUserType() == 'ADMIN' || this.currentUser.getUserType() == 'TEACHER');
 
-  isStudentButton= !(this.usertype.getUserType()=='STUDENT')
+  isStudentButton= !(this.currentUser.getUserType()=='STUDENT');
+
+  // Return true if id is ins enrolledStudentsIDs (if a student (received from id) is enrolled in actual schedule)
+  isEnrolled(user:LoggedUserServiceService) : boolean{
+    let id = user.getUserId();
+    // @ts-ignore
+    for(let i of this.enrolledStudentsIDs)
+      if(id == i)
+        return true;
+    return false;
+  }
+
+  isStudent(user:LoggedUserServiceService):boolean{
+    if(user.getUserType() === "STUDENT")
+      return true;
+    return false;
+  }
+
+  // This method run when enrollBtn is clicked
+  enrollInClass(){
+    // already enrolled, unenrolled now!
+    if(this.isEnrolled(this.currentUser)){
+      this.repartitionService.deleteRepartition(this.id, this.currentUser.getUserId()).subscribe(data=>{
+        console.log(data);
+      },error => {console.log(error)});
+      this.enrollBtn.innerText = "Unenroll from class";
+    }
+
+    if(this.isEnrolled(this.currentUser) == false){
+      let newRepartition = new RepartitionDTO(this.currentUser.getUserId(),this.id);
+      this.repartitionService.createRepartition(this.id, newRepartition).subscribe(data=>{
+        console.log(data);
+      },error => {console.log(error)});
+
+      this.enrollBtn.innerText = "Enroll in class";
+    }
+
+
+  }
 
 }
