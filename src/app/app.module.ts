@@ -14,6 +14,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddScheduleComponent } from './components/add-schedule/add-schedule.component';
 import {LoggedUserServiceService} from "./logged-user.service";
+import { EnrollComponent } from './components/enroll/enroll.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import {LoggedUserServiceService} from "./logged-user.service";
     CalendarComponent,
     HeaderComponent,
     ScheduleComponent,
-    AddScheduleComponent
+    AddScheduleComponent,
+    EnrollComponent
   ],
   imports: [
     BrowserAnimationsModule,

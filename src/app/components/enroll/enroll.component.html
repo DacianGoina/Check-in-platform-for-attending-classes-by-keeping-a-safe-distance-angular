@@ -1,0 +1,24 @@
+<div class="container cont1" >
+  <div class="form-group pad">
+    Numele clasei: <h2>{{classDTOobj.courseName}}</h2>
+  </div>
+  <div class="form-group pad">
+    Sala: <b>{{classDTOobj.roomName}}</b>
+  </div>
+  <div class="form-group pad">
+    Numele profesorului: <b>{{classDTOobj.teacherFirstName}} {{classDTOobj.teacherLastName}}</b>
+  </div>
+  <div class="form-group pad">
+    Capacitatea maximă a sălii:{{classDTOobj.capacity}}
+  </div>
+  <div class="form-group pad">
+    Sunt {{this.classDTOobj.studentsNumber}} studenți înscrisi și {{this.classDTOobj.capacity-this.classDTOobj.studentsNumber}} locuri libere
+  </div>
+  <div class="form-group pad">
+    Din {{classDTOobj.startDate| date:   'short': 'locale'}} în {{classDTOobj.endDate| date:'short':'locale'}}
+  </div>
+  <div class="form-group pad2 ">
+    <button type="submit" class="btn btn-info" id = "enrollBtn"  (click) = "enrollInClass()">Enroll in class</button>
+
+  </div>
+</div>

@@ -4,6 +4,7 @@ import {CalendarComponent} from "./components/calendar/calendar.component";
 import {ScheduleComponent} from "./components/schedule/schedule.component";
 import { AddScheduleComponent } from './components/add-schedule/add-schedule.component';
 import {CreatePageGuard} from "./create-page.guard";
+import {EnrollComponent} from "./components/enroll/enroll.component";
 
 
 const routes: Routes = [
@@ -19,6 +20,10 @@ const routes: Routes = [
     path: 'addSchedule',
     component: AddScheduleComponent,
     canActivate: [CreatePageGuard],
+  },
+  {
+    path:'enroll/:id',
+    component: EnrollComponent,
   },
   {
     path: '**',

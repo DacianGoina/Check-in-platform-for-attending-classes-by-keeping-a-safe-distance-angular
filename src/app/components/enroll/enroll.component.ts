@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import {ActivatedRoute,  Router} from '@angular/router';
 
 import { ClassDTOService } from "../../class-dto.service";
 import {ClassDTO} from "../../class-dto";
@@ -11,16 +11,15 @@ import {RepartitionDTOService} from "../../repartition-dto.service";
 
 
 @Component({
-  selector: 'app-schedule',
-  templateUrl: './schedule.component.html',
-  styleUrls: ['./schedule.component.css']
+  selector: 'app-enroll',
+  templateUrl: './enroll.component.html',
+  styleUrls: ['./enroll.component.css']
 })
-export class ScheduleComponent implements OnInit {
+export class EnrollComponent implements OnInit {
+
   id:number =0;
   cap: ClassroomDetails["capacity"]=0;
 
-  starttime= new Date();
-  endtime= new Date();
   classDTOobj:ClassDTO = new ClassDTO(0,0,0,'','',0,0,'','','','');
   courseNames:string[] | undefined;
   clDetails:ClassroomDetails[] | undefined;
@@ -80,69 +79,11 @@ export class ScheduleComponent implements OnInit {
 
   }
 
-  sendUpdates():void{
-    // get element by ID pentru cele 2 selectoare
-    let classroomName = (document.getElementById("selectClassroom")) as HTMLSelectElement;
-    let courseName = (document.getElementById("selectCourse")) as HTMLSelectElement;
-
-    // pentru a obtine valorile selectate (adica alea din varf)
-    let aux1 = classroomName.options[classroomName.selectedIndex];
-    let val1 = (<HTMLSelectElement><unknown>aux1).innerText;
-
-    let aux2 = courseName.options[courseName.selectedIndex];
-    let val2 = (<HTMLSelectElement><unknown>aux2).value;
-
-
-    let startTimeVal = new Date(this.starttime).toISOString();
-    let endTimeVal = new Date(this.endtime).toISOString();
-
-    // aici doar le afisez
-    console.log("Nume clasa: " + val1);
-    console.log("Nume curs: " + val2);
-    //console.log("Start time: " + this.starttime);
-    //console.log("End time: " + this.endtime);
-    console.log("Start time: " + startTimeVal);
-    console.log("End time: " + endTimeVal);
-    console.log("Planner id: " + this.classDTOobj.id);
-
-    let currentId = this.classDTOobj.id;
-    let newPlanner = new ClassDTO(0,this.classDTOobj.id,0,startTimeVal,endTimeVal,0,0,'',val1,val2,'');
-
-    window.alert('update succescful');
-    this.classDTOService.updateSchedule(currentId,newPlanner).subscribe(data =>{
-      this.goToMainPage();
-    }, error => console.log(error));
-
-  }
-
-  deleteSchedule(){
-    let id = this.classDTOobj.id;
-    console.log("Se va sterge schedule cu id: " + id);
-    let bar = confirm('esti sigur?');
-    console.log( bar);
-    this.classDTOService.deleteSchedule(id).subscribe(data=>{
-      console.log(data);
-      window.alert('Schedule deleted with succes')
-      this.goToMainPage();
-    });
-
-  }
-
-  goToMainPage(){
-    this.router.navigate(['/class']);
-  }
-
-  isShowDiv = true;
-
-  toggleDisplayDiv() {
-    this.isShowDiv = !this.isShowDiv;
-  }
 
 
 
-  isShowButton = !(this.currentUser.getUserType() == 'ADMIN' || this.currentUser.getUserType() == 'TEACHER');
 
- 
+
   // Return true if id is ins enrolledStudentsIDs (if a student (received from id) is enrolled in actual schedule)
   isEnrolled(user:LoggedUserServiceService) : boolean{
     let id = user.getUserId();
@@ -174,5 +115,6 @@ export class ScheduleComponent implements OnInit {
 
 
   }
+
 
 }

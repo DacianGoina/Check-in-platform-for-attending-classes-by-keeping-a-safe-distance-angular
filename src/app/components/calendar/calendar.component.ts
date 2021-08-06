@@ -5,6 +5,7 @@ import {ClassDTO} from "../../class-dto";
 import {UserService} from "../../user.service";
 import {ClassDTOService} from "../../class-dto.service";
 import { Router } from '@angular/router';
+import {LoggedUserServiceService} from "../../logged-user.service";
 
 
 @Component({
@@ -17,10 +18,15 @@ export class CalendarComponent implements OnInit {
   // tablouri care transporta date
   users:User[] | undefined;
   classDTOarray:ClassDTO[] | undefined;
+  selectedUserType='';
+  selectedUserId=0;
 
   constructor(private userService: UserService,
               private classDTOService: ClassDTOService,
-              public router: Router) {
+              public router: Router,
+              public userlogged: LoggedUserServiceService) {
+    this.selectedUserType= this.userlogged.getUserType();
+    this.selectedUserId= this.userlogged.getUserId();
 
 
   }
@@ -59,6 +65,13 @@ export class CalendarComponent implements OnInit {
     });
   }
 
+  redirectare(id:number){
+    if(this.userlogged.getUserType()=='STUDENT'){
+      this.router.navigate(['enroll', id]);
+    }else{
+      this.router.navigate(['class', id]);
+    }
+  }
 
 //obtinerea zilelor saptamanii
   today: Date= new Date();
