@@ -15,6 +15,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddScheduleComponent } from './components/add-schedule/add-schedule.component';
 import {LoggedUserServiceService} from "./logged-user.service";
 import { EnrollComponent } from './components/enroll/enroll.component';
+import { AddClassComponent } from './components/add-class/add-class.component';
+import { AddClassroomComponent } from './components/add-classroom/add-classroom.component';
 
 
 @NgModule({
@@ -25,7 +27,9 @@ import { EnrollComponent } from './components/enroll/enroll.component';
     HeaderComponent,
     ScheduleComponent,
     AddScheduleComponent,
-    EnrollComponent
+    EnrollComponent,
+    AddClassComponent,
+    AddClassroomComponent
   ],
   imports: [
     BrowserAnimationsModule,

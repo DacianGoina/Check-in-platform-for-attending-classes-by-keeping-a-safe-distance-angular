@@ -4,6 +4,8 @@
   <li (click)=" studentfunction()" routerLink="/class">Student</li>
   <li (click)="change('TEACHER')" routerLink="/class">Teacher</li>
   <li (click)="change('ADMIN')" routerLink="/class">Admin</li>
+  <li [hidden]="isAdmin()"  routerLink="/createClass">Create Class</li>
+  <li [hidden]="isAdmin()"  routerLink="/createClassroom">Create Classroom</li>
   <li class="toright">You are logged in as {{selectedUserType}}</li>
 
 </ul>

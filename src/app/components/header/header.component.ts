@@ -27,6 +27,10 @@ export class HeaderComponent implements OnInit {
   selectedUserType= '';
   selectedUserId= 0;
 
+  isAdmin(){
+    return this.usertype.getUserType()!=='ADMIN';
+  }
+
   ngOnInit(): void {
 
   }
