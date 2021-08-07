@@ -6,6 +6,8 @@ import {ClassDTO} from "./class-dto";
 import {ClassroomDetails} from "./classroom-details";
 import {RepartitionDTO} from "./repartition-dto";
 import {TeacherDTO} from "./teacher-dto";
+import {ClassEntity} from "./class-entity";
+import {Classroom} from "./classroom";
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +22,8 @@ export class ClassDTOService {
   private RESTclassDTOURL:string = "http://localhost:8080/class";
   private POSTclassDTOURL:string = "http://localhost:8080/addSchedule";
   private GETTeacherDTOURL:string = "http://localhost:8080/teacherDTO";
+  private POSTClassEntityURL:string = "http://localhost:8080/createClass";
+  private POSTClassroomURL:string = "http://localhost:8080/createClassroom";
   constructor(private httpClient: HttpClient) { }
   getClassDTOList() : Observable<ClassDTO[]>{
     return this.httpClient.get<ClassDTO[]>(`${this.baseURL}`);
@@ -55,6 +59,14 @@ export class ClassDTOService {
 
   getTeacherDTOList() : Observable<TeacherDTO[]>{
     return this.httpClient.get<TeacherDTO[]>(`${this.GETTeacherDTOURL}`);
+  }
+
+  createClassEntity(newClassEntity:ClassEntity):Observable<Object>{
+    return this.httpClient.post(`${this.POSTClassEntityURL}`,newClassEntity);
+  }
+
+  createClassroom(newClassroom:Classroom):Observable<Object>{
+    return this.httpClient.post(`${this.POSTClassroomURL}`,newClassroom);
   }
 
 }

@@ -23,8 +23,6 @@ export class EnrollComponent implements OnInit {
   classDTOobj:ClassDTO = new ClassDTO(0,0,0,'','',0,0,'','','','');
   enrolledStudentsIDs:number[]  = [];
 
-  //private enrollBtn =  <HTMLButtonElement>document.getElementById("enrollBtn");
-
   constructor( private route: ActivatedRoute,
                private classDTOService: ClassDTOService,
                private router: Router,
@@ -88,6 +86,7 @@ export class EnrollComponent implements OnInit {
       //let repartition:RepartitionDTO = new RepartitionDTO(this.currentUser.getUserId(),this.id);
       let repartition:RepartitionDTO = new RepartitionDTO(12,12);
       this.repartitionService.deleteRepartition(this.id, repartition).subscribe(data=>{
+        this.classDTOobj.studentsNumber = this.classDTOobj.studentsNumber - 1;
         console.log(data);
       },error => {console.log(error)});
       //this.enrollBtn.innerText = "Unenroll from class";
@@ -107,6 +106,7 @@ export class EnrollComponent implements OnInit {
       else {
         let newRepartition = new RepartitionDTO(this.currentUser.getUserId(), this.id);
         this.repartitionService.createRepartition(this.id, newRepartition).subscribe(data => {
+          this.classDTOobj.studentsNumber = this.classDTOobj.studentsNumber + 1;
           console.log(data);
         }, error => {
           console.log(error)

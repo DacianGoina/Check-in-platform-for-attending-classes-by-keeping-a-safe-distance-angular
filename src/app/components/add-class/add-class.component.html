@@ -7,7 +7,7 @@
     <div class="distance">
       <label >Select Teacher:  </label>
       <select class="form-control"  id = "selectTeacher"  >
-        <option *ngFor="let teacher of teacherDTOList"  value="{{teacher.id}}"  >{{teacher.firstName}} {{teacher.lastName}}</option>
+        <option *ngFor="let teacher of teacherDTOList"  value="{{teacher.id}}"  >{{teacher.firstName + " " +teacher.lastName}}</option>
       </select>
     </div>
     <div class="distance">
@@ -19,7 +19,7 @@
       <input type="text" required="required" id="section" name="section">
     </div>
     <div class="but">
-      <button class="btn btn-info" >Create class</button>
+      <button class="btn btn-info" id = "createClassBtn" (click) = "createClass()">Create class</button>
     </div>
   </form>
 </div>

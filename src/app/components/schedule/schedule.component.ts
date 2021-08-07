@@ -69,6 +69,7 @@ export class ScheduleComponent implements OnInit {
     let aux2 = courseName.options[courseName.selectedIndex];
     let val2 = (<HTMLSelectElement><unknown>aux2).value;
 
+    let newRoomCapacity = (<HTMLSelectElement><unknown>aux1).value;
 
     let startTimeVal = new Date(this.starttime).toISOString();
     let endTimeVal = new Date(this.endtime).toISOString();
@@ -81,14 +82,23 @@ export class ScheduleComponent implements OnInit {
     console.log("Start time: " + startTimeVal);
     console.log("End time: " + endTimeVal);
     console.log("Planner id: " + this.classDTOobj.id);
-
+    console.log("Room capacity: " + newRoomCapacity);
     let currentId = this.classDTOobj.id;
-    let newPlanner = new ClassDTO(0,this.classDTOobj.id,0,startTimeVal,endTimeVal,0,0,'',val1,val2,'');
 
-    window.alert('update succescful');
-    this.classDTOService.updateSchedule(currentId,newPlanner).subscribe(data =>{
-      this.goToMainPage();
-    }, error => console.log(error));
+    if(Number(newRoomCapacity) < this.classDTOobj.studentsNumber)
+      window.alert("Sala selectata contine prea putine locuri pentru numarul de studenti deja insrisi");
+
+    else {
+      let newPlanner = new ClassDTO(0, this.classDTOobj.id, 0, startTimeVal, endTimeVal, 0, 0, '', val1, val2, '');
+      this.classDTOService.updateSchedule(currentId, newPlanner).subscribe(data => {
+        window.alert('update succesful');
+        this.goToMainPage();
+      }, error => {
+        console.log(error);
+        window.alert("update failed")
+      });
+
+    }
 
   }
 

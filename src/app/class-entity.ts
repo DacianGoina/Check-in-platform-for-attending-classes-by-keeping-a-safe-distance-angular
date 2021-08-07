@@ -3,14 +3,14 @@ export class ClassEntity {
    teacherId:number;
    name:string;
    year:number;
-   department:string;
+   section:string;
 
   constructor(id:number, teacherId:number, name:string, year:number, department:string){
     this.id = id;
     this.teacherId = teacherId;
     this.name = name;
     this.year = year;
-    this.department = department;
+    this.section = department;
   }
 
 }
