@@ -22,7 +22,7 @@ const routes: Routes = [
     canActivate: [CreatePageGuard],
   },
   {
-    path:'enroll/:id',
+    path:'class/:id/enroll',
     component: EnrollComponent,
   },
   {
