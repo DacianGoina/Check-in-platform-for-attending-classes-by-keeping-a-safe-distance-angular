@@ -5,6 +5,7 @@ import {User} from "./user";
 import {ClassDTO} from "./class-dto";
 import {ClassroomDetails} from "./classroom-details";
 import {RepartitionDTO} from "./repartition-dto";
+import {TeacherDTO} from "./teacher-dto";
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class ClassDTOService {
   private classroomsDetailsURL:string = "http://localhost:8080/cldetails";
   private RESTclassDTOURL:string = "http://localhost:8080/class";
   private POSTclassDTOURL:string = "http://localhost:8080/addSchedule";
-
+  private GETTeacherDTOURL:string = "http://localhost:8080/teacherDTO";
   constructor(private httpClient: HttpClient) { }
   getClassDTOList() : Observable<ClassDTO[]>{
     return this.httpClient.get<ClassDTO[]>(`${this.baseURL}`);
@@ -52,5 +53,8 @@ export class ClassDTOService {
     return this.httpClient.post(`${this.POSTclassDTOURL}`,newPlanner);
   }
 
+  getTeacherDTOList() : Observable<TeacherDTO[]>{
+    return this.httpClient.get<TeacherDTO[]>(`${this.GETTeacherDTOURL}`);
+  }
 
 }

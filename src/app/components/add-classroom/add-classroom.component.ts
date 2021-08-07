@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ClassDTOService} from "../../class-dto.service";
 
 @Component({
   selector: 'app-add-classroom',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddClassroomComponent implements OnInit {
 
-  constructor() { }
+  roomNamesList:string[] = [];
+  constructor(private classDTOService:ClassDTOService) { }
 
   ngOnInit(): void {
+    this.classDTOService.getroomNames().subscribe(data =>{
+      this.roomNamesList = data;
+    })
   }
 
 }

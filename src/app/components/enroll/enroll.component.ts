@@ -21,8 +21,6 @@ export class EnrollComponent implements OnInit {
   cap: ClassroomDetails["capacity"]=0;
 
   classDTOobj:ClassDTO = new ClassDTO(0,0,0,'','',0,0,'','','','');
-  //courseNames:string[] | undefined;
-  //clDetails:ClassroomDetails[] | undefined;
   enrolledStudentsIDs:number[]  = [];
 
   //private enrollBtn =  <HTMLButtonElement>document.getElementById("enrollBtn");
