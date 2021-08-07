@@ -24,16 +24,12 @@ export class ScheduleComponent implements OnInit {
   classDTOobj:ClassDTO = new ClassDTO(0,0,0,'','',0,0,'','','','');
   courseNames:string[] | undefined;
   clDetails:ClassroomDetails[] | undefined;
-  enrolledStudentsIDs:number[] | undefined;
-
-  enrollBtn = <HTMLAudioElement>document.getElementById("enrollBtn");
 
 
   constructor( private route: ActivatedRoute,
                private classDTOService: ClassDTOService,
                private router: Router,
-               private currentUser: LoggedUserServiceService,
-               private repartitionService: RepartitionDTOService) {
+               private currentUser: LoggedUserServiceService) {
 
   }
 
@@ -41,14 +37,7 @@ export class ScheduleComponent implements OnInit {
   ngOnInit(): void {
 
     this.id = this.route.snapshot.params['id'];
-    /*this.id = 11;
-    this.route.params.subscribe(
-        params => {
-          const myid = +params['id'];
-          console.log("!!ID INSIDE: " + myid);
-          this.id = myid;
-        }
-    );*/
+
     console.log("!!!ID OUTSIDE: " + this.id);
     this.classDTOService.getClassDTOById(this.id).subscribe(data =>{
       this.classDTOobj = data; this.cap=this.classDTOobj.capacity;
@@ -65,18 +54,6 @@ export class ScheduleComponent implements OnInit {
       this.courseNames = data;
     });
 
-    // Array cu id-urile studentilor inscrisi in acest schedule
-    this.repartitionService.getRepatitionDTO(this.id).subscribe(data=>{
-      this.enrolledStudentsIDs = data;
-    });
-
-    // set initial value for enrollBtn
-    if(this.isEnrolled(this.currentUser)){
-      this.enrollBtn.innerText = "Unenroll from class";
-    }
-    else{
-      this.enrollBtn.innerText = "Enroll in class";
-    }
 
   }
 
@@ -138,41 +115,8 @@ export class ScheduleComponent implements OnInit {
     this.isShowDiv = !this.isShowDiv;
   }
 
-
-
   isShowButton = !(this.currentUser.getUserType() == 'ADMIN' || this.currentUser.getUserType() == 'TEACHER');
 
- 
-  // Return true if id is ins enrolledStudentsIDs (if a student (received from id) is enrolled in actual schedule)
-  isEnrolled(user:LoggedUserServiceService) : boolean{
-    let id = user.getUserId();
-    // @ts-ignore
-    for(let i of this.enrolledStudentsIDs)
-      if(id == i)
-        return true;
-    return false;
-  }
 
-  // This method run when enrollBtn is clicked
-  enrollInClass(){
-    // already enrolled, unenrolled now!
-    if(this.isEnrolled(this.currentUser)){
-      this.repartitionService.deleteRepartition(this.id, this.currentUser.getUserId()).subscribe(data=>{
-        console.log(data);
-      },error => {console.log(error)});
-      this.enrollBtn.innerText = "Unenroll from class";
-    }
-
-    if(!this.isEnrolled(this.currentUser)){
-      let newRepartition = new RepartitionDTO(this.currentUser.getUserId(),this.id);
-      this.repartitionService.createRepartition(this.id, newRepartition).subscribe(data=>{
-        console.log(data);
-      },error => {console.log(error)});
-
-      this.enrollBtn.innerText = "Enroll in class";
-    }
-
-
-  }
 
 }
