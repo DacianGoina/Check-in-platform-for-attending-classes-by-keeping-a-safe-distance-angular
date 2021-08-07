@@ -99,7 +99,7 @@ export class ScheduleComponent implements OnInit {
     console.log( bar);
     this.classDTOService.deleteSchedule(id).subscribe(data=>{
       console.log(data);
-      window.alert('Schedule deleted with succes')
+      window.alert('Schedule deleted with succes');
       this.goToMainPage();
     });
 

@@ -92,19 +92,25 @@ export class EnrollComponent implements OnInit {
       let indexInArray = this.enrolledStudentsIDs.indexOf(this.currentUser.getUserId());
       delete this.enrolledStudentsIDs[indexInArray];
 
-      //this.enrollBtn.innerText = "Enroll from class";
       enrollBtn.innerText = "Enroll from class";
     }
 
     //if(!this.isEnrolled(this.currentUser)){
     else{
-      let newRepartition = new RepartitionDTO(this.currentUser.getUserId(),this.id);
-      this.repartitionService.createRepartition(this.id, newRepartition).subscribe(data=>{
-        console.log(data);
-      },error => {console.log(error)});
-      this.enrolledStudentsIDs.push(this.currentUser.getUserId());
-      //this.enrollBtn.innerText = "Unenroll in class";
-      enrollBtn.innerText = "Unenroll in class";
+
+      if(this.classDTOobj.studentsNumber == this.classDTOobj.capacity)
+        window.alert('Nu mai sunt locuri in clasa');
+
+      else {
+        let newRepartition = new RepartitionDTO(this.currentUser.getUserId(), this.id);
+        this.repartitionService.createRepartition(this.id, newRepartition).subscribe(data => {
+          console.log(data);
+        }, error => {
+          console.log(error)
+        });
+        this.enrolledStudentsIDs.push(this.currentUser.getUserId());
+        enrollBtn.innerText = "Unenroll in class";
+      }
 
     }
 
