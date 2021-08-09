@@ -15,7 +15,7 @@
     <div class="ore" >{{hour}}:00</div>
     <div class="col-sm emptys" *ngFor="let day of thisweek"   >
       <div class="colorat" *ngIf="eventIsNow(day, hour) else elseblock"    >
-        <div *ngIf="isStudent() else elseblock" routerLink="/class/{{event.id}}/enroll">
+        <div *ngIf="isStudent() else elseblock" routerLink="/class/{{event.id}}/enroll/{{userlogged.getUserId()}}">
           <b>{{event.courseName}}</b><br>
           Classroom: <b >{{event.roomName}}</b><br>
           Teacher: <b> {{event.teacherFirstName.charAt(0)+'. '+ event.teacherLastName}}</b><br>

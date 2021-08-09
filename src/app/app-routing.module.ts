@@ -25,7 +25,7 @@ const routes: Routes = [
     canActivate: [CreatePageGuard],
   },
   {
-    path:'class/:id/enroll',
+    path:'class/:id/enroll/:stId',
     component: EnrollComponent,
   },
   {
