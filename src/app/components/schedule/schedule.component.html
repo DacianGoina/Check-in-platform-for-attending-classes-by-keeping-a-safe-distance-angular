@@ -40,24 +40,8 @@
          (pe aceeasi linie) cu cel de modify details (de ex unul pot fi in partea stanga si unul in dreapta)
 
          DE ASEMENEA: sa faci tabelul PUTIN mai frumos, de ex acum nu are linii deloc, sa ii pui-->
-      <button class="btn btn-info buto3" (click) = "generateExcel()">Export ca Excel</button>
 
-      <table id="excel-table">
-        <tr>
-          <th>Id</th>
-          <th>Prenume</th>
-          <th>Nume</th>
-          <th>An</th>
-          <th>Departament</th>
-        </tr>
-        <tr *ngFor="let item of enrolledStudents">
-          <td>{{item.id}}</td>
-          <td>{{item.firstName}}</td>
-          <td>{{item.lastName}}</td>
-          <td>{{item.year}}</td>
-          <td>{{item.department}}</td>
-        </tr>
-      </table>
+
 
 
       <!-- AICI SE TERMINA TABELUL DE CARE VORBEAM -->
@@ -66,7 +50,7 @@
   </form>
 </div>
 
-<div class="container cont1" [hidden]="!isShowDiv">
+<div class="container cont1" [hidden]="isShowForm">
   <div class="form-group pad">
     Numele clasei: <h2>{{classDTOobj.courseName}}</h2>
   </div>
@@ -86,6 +70,37 @@
     Din {{classDTOobj.startDate| date:   'short': 'locale'}} în {{classDTOobj.endDate| date:'short':'locale'}}
   </div>
   <div class="form-group pad2 ">
+    <button class="btn btn-info" (click)=toggleStudents() [hidden]="isShowButton">Studenți înscrisi</button>
    <button class="btn btn-info toright" (click)=toggleDisplayDiv() [hidden]="isShowButton">Modify Details</button>
+  </div>
+</div>
+
+
+<div [hidden]="isShowStudents" class=" container cont">
+
+  <table id="excel-table" class="table table-hover">
+    <thead >
+      <tr>
+        <th>Id</th>
+        <th>Prenume</th>
+        <th>Nume</th>
+        <th>An</th>
+        <th>Departament</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of enrolledStudents">
+      <th>{{item.id}}</th>
+      <td>{{item.firstName}}</td>
+      <td>{{item.lastName}}</td>
+      <td>{{item.year}}</td>
+      <td>{{item.department}}</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div class="form-group pad2 ">
+  <button class="btn btn-info" (click) = "generateExcel()">Export ca Excel</button>
+    <button class="btn btn-info toright " (click)=toggleStudents() >Cancel</button>
   </div>
 </div>

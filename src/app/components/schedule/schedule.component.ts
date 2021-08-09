@@ -13,6 +13,7 @@ import {UserService} from "../../user.service";
 import * as XLSX from 'xlsx';
 
 
+
 @Component({
   selector: 'app-schedule',
   templateUrl: './schedule.component.html',
@@ -127,9 +128,18 @@ export class ScheduleComponent implements OnInit {
   }
 
   isShowDiv = true;
+  isShowForm= false;
 
   toggleDisplayDiv() {
     this.isShowDiv = !this.isShowDiv;
+    this.isShowForm= !this.isShowForm;
+  }
+
+  isShowStudents = true;
+
+  toggleStudents(){
+    this.isShowStudents=!this.isShowStudents;
+    this.isShowForm= !this.isShowForm;
   }
 
   isShowButton = !(this.currentUser.getUserType() == 'ADMIN' || this.currentUser.getUserType() == 'TEACHER');
