@@ -33,6 +33,35 @@
       <button  class="btn btn-warning buto" id = "updateBtn" (click)="sendUpdates()" >Update</button>
       <button class="btn btn-info buto2 " (click)=toggleDisplayDiv() >Cancel</button>
       <button class="btn btn-danger toright" (click)="deleteSchedule()" >Delete</button>
+
+      <!-- BUTONUL ASTA (care genereaza excel) SI TABELUL SE MUTA INTR-UN CONTAINER -  DIV CARE VA FI VIZIBIL
+      DOAR CAND SE APASA BUTONUL "Vizualizare studenti inscrisi" (tot la fel cu show, unshow cum e modify details)
+        SA ADAUGI un buton "Vizualizare studenti inscrisi" (sau nume asemanator) si sa fie in acelasi container
+         (pe aceeasi linie) cu cel de modify details (de ex unul pot fi in partea stanga si unul in dreapta)
+
+         DE ASEMENEA: sa faci tabelul PUTIN mai frumos, de ex acum nu are linii deloc, sa ii pui-->
+      <button class="btn btn-info buto3" (click) = "generateExcel()">Export ca Excel</button>
+
+      <table id="excel-table">
+        <tr>
+          <th>Id</th>
+          <th>Prenume</th>
+          <th>Nume</th>
+          <th>An</th>
+          <th>Departament</th>
+        </tr>
+        <tr *ngFor="let item of enrolledStudents">
+          <td>{{item.id}}</td>
+          <td>{{item.firstName}}</td>
+          <td>{{item.lastName}}</td>
+          <td>{{item.year}}</td>
+          <td>{{item.department}}</td>
+        </tr>
+      </table>
+
+
+      <!-- AICI SE TERMINA TABELUL DE CARE VORBEAM -->
+
     </div>
   </form>
 </div>

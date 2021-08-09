@@ -8,6 +8,9 @@ import {ClassroomDetails} from "../../classroom-details";
 import {LoggedUserServiceService} from "../../logged-user.service";
 import {RepartitionDTO} from "../../repartition-dto";
 import {RepartitionDTOService} from "../../repartition-dto.service";
+import {User} from "../../user";
+import {UserService} from "../../user.service";
+import * as XLSX from 'xlsx';
 
 
 @Component({
@@ -24,12 +27,13 @@ export class ScheduleComponent implements OnInit {
   classDTOobj:ClassDTO = new ClassDTO(0,0,0,'','',0,0,'','','','');
   courseNames:string[] | undefined;
   clDetails:ClassroomDetails[] | undefined;
-
+  enrolledStudents:User[] = [];
 
   constructor( private route: ActivatedRoute,
                private classDTOService: ClassDTOService,
                private router: Router,
-               private currentUser: LoggedUserServiceService) {
+               private currentUser: LoggedUserServiceService,
+               private userService:UserService) {
 
   }
 
@@ -54,6 +58,9 @@ export class ScheduleComponent implements OnInit {
       this.courseNames = data;
     });
 
+    this.userService.getStudentsByPlannerId(this.id).subscribe(data =>{
+      this.enrolledStudents = data;
+    });
 
   }
 
@@ -127,6 +134,23 @@ export class ScheduleComponent implements OnInit {
 
   isShowButton = !(this.currentUser.getUserType() == 'ADMIN' || this.currentUser.getUserType() == 'TEACHER');
 
+
+  // Export enrolled students data as EXCEL
+  generateExcel(){
+    let fileName = this.classDTOobj.courseName + "_" + this.classDTOobj.roomName + "_" + this.classDTOobj.startDate.split("T")[0] + ".xlsx";
+
+    /* pass here the table id */
+    let element = document.getElementById('excel-table');
+    const ws: XLSX.WorkSheet =XLSX.utils.table_to_sheet(element);
+
+    /* generate workbook and add the worksheet */
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+    /* save to file */
+    XLSX.writeFile(wb, fileName);
+
+  }
 
 
 }
