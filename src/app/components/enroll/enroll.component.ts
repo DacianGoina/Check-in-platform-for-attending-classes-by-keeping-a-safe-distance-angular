@@ -35,6 +35,7 @@ export class EnrollComponent implements OnInit {
   ngOnInit(): void {
 
     this.id = this.route.snapshot.params['id'];
+    console.log("Planner id: " + this.id + " User id:" + this.currentUser.getUserId());
     this.classDTOService.getClassDTOById(this.id).subscribe(data =>{
       this.classDTOobj = data; this.cap=this.classDTOobj.capacity;
       console.log(this.classDTOobj.courseName + " predat de" + this.classDTOobj.teacherFirstName + " " + this.classDTOobj.teacherLastName + " " + this.classDTOobj.studentsNumber);
@@ -84,8 +85,8 @@ export class EnrollComponent implements OnInit {
     // already enrolled, unenrolled now!
     if(this.isEnrolled(this.currentUser)){
       //let repartition:RepartitionDTO = new RepartitionDTO(this.currentUser.getUserId(),this.id);
-      let repartition:RepartitionDTO = new RepartitionDTO(12,12);
-      this.repartitionService.deleteRepartition(this.id, repartition).subscribe(data=>{
+      //let repartition:RepartitionDTO = new RepartitionDTO(12,12);
+      this.repartitionService.deleteRepartition(this.id, this.currentUser.getUserId()).subscribe(data=>{
         this.classDTOobj.studentsNumber = this.classDTOobj.studentsNumber - 1;
         console.log(data);
       },error => {console.log(error)});

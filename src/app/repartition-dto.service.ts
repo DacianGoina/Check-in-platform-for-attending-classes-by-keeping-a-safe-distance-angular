@@ -26,35 +26,12 @@ export class RepartitionDTOService {
     return this.httpClient.post(`${this.POSTRepartitionDTOURL}/${plannerId}/${this.auxPath}`,newRepartition);
   }
 
-  deleteRepartition(plannerId:number, repartition:RepartitionDTO):Observable<Object>{
-    //return this.httpClient.delete(`${this.POSTRepartitionDTOURL}/${plannerId}/${"enroll"}`);
+  deleteRepartition(id:number, studentId:number):Observable<Object>{
+    return this.httpClient.delete(`${this.POSTRepartitionDTOURL}/${id}/${this.auxPath}/${studentId}`);
     //return this.httpClient.delete(`${this.POSTRepartitionDTOURL}/${plannerId}/${this.auxPath}`);
 
-    return this.httpClient.request('DELETE', `${this.POSTRepartitionDTOURL}/${plannerId}/${this.auxPath}`, { body: repartition});
-    /*
-    const options = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-      }),
-      body: repartition,
-    };
+    //return this.httpClient.request('DELETE', `${this.POSTRepartitionDTOURL}/${plannerId}/${this.auxPath}`, { body: repartition});
 
-
-    this.httpClient
-        .delete(`${this.POSTRepartitionDTOURL}/${plannerId}/${this.auxPath}`, options)
-        .subscribe((s) => {
-          console.log(s);
-        });
-
-    return new Observable<RepartitionDTO>();
-    /*
-    return this.httpClient.request('DELETE', `${this.POSTRepartitionDTOURL}/${plannerId}/${this.auxPath}`, { body: repartition,
-      headers:new HttpHeaders({
-        'Content-Type': 'application/json',
-      })
-    });
-
-     */
 
   }
 
