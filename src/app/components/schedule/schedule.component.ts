@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,   Input, OnInit,  } from '@angular/core';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 
 import { ClassDTOService } from "../../class-dto.service";
+import {addHours} from "date-fns";
 import {ClassDTO} from "../../class-dto";
 import {count} from "rxjs/operators";
 import {ClassroomDetails} from "../../classroom-details";
@@ -10,6 +11,7 @@ import {RepartitionDTO} from "../../repartition-dto";
 import {RepartitionDTOService} from "../../repartition-dto.service";
 import {User} from "../../user";
 import {UserService} from "../../user.service";
+
 import * as XLSX from 'xlsx';
 
 
@@ -23,8 +25,10 @@ export class ScheduleComponent implements OnInit {
   id:number =0;
   cap: ClassroomDetails["capacity"]=0;
 
-  starttime= new Date();
-  endtime= new Date();
+  @Input() starttime:string='';
+  @Input() endtime:string='';
+
+
   classDTOobj:ClassDTO = new ClassDTO(0,0,0,'','',0,0,'','','','');
   courseNames:string[] | undefined;
   clDetails:ClassroomDetails[] | undefined;
@@ -46,6 +50,8 @@ export class ScheduleComponent implements OnInit {
     console.log("!!!ID OUTSIDE: " + this.id);
     this.classDTOService.getClassDTOById(this.id).subscribe(data =>{
       this.classDTOobj = data; this.cap=this.classDTOobj.capacity;
+      this.starttime= addHours(new Date(this.classDTOobj.startDate), 3).toISOString().slice(0, 16);
+      this.endtime=addHours(new Date(this.classDTOobj.endDate), 3).toISOString().slice(0, 16);
       console.log(this.classDTOobj.courseName + " predat de" + this.classDTOobj.teacherFirstName + " " + this.classDTOobj.teacherLastName + " " + this.classDTOobj.studentsNumber);
     },error => console.log(error));
 
@@ -62,6 +68,7 @@ export class ScheduleComponent implements OnInit {
     this.userService.getStudentsByPlannerId(this.id).subscribe(data =>{
       this.enrolledStudents = data;
     });
+
 
   }
 
@@ -136,6 +143,13 @@ export class ScheduleComponent implements OnInit {
   }
 
   isShowStudents = true;
+
+
+
+  toggleAdmin(){
+    return this.currentUser.getUserType()=='ADMIN';
+  }
+
 
   toggleStudents(){
     this.isShowStudents=!this.isShowStudents;

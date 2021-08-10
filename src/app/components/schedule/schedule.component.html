@@ -1,7 +1,7 @@
 
 
 <div class=" container cont" [hidden]="isShowDiv">
-  <form>
+  <form >
     <div class="form-group">
       <label >Select course:  </label>
       <select class="form-control" id = "selectCourse" >
@@ -22,9 +22,8 @@
 
     <div class="form-group pad">
       <label>Start time:</label>
-      <input type="datetime-local" id="startTime" name="startTime" [(ngModel)]="starttime">
+      <input type="datetime-local" id="startTime" name="startTime" [(ngModel)]="starttime" >
     </div>
-
     <div class="form-group pad">
       <label>End time:  </label>
       <input type="datetime-local" id="endTime" name="endTime" [(ngModel)]="endtime" required="required">
@@ -32,7 +31,7 @@
     <div class="form-group pad2 ">
       <button  class="btn btn-warning buto" id = "updateBtn" (click)="sendUpdates()" >Update</button>
       <button class="btn btn-info buto2 " (click)=toggleDisplayDiv() >Cancel</button>
-      <button class="btn btn-danger toright" (click)="deleteSchedule()" >Delete</button>
+      <button class="btn btn-danger toright" (click)="deleteSchedule()" [hidden]="!toggleAdmin()" >Delete</button>
 
 
 
