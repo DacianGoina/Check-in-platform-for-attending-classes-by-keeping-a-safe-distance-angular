@@ -20,6 +20,9 @@ export class CalendarComponent implements OnInit {
   classDTOarray:ClassDTO[] | undefined;
   selectedUserType='';
   selectedUserId=0;
+  clickedDate(a: number, b:Date){
+    this.userlogged.setStartDate(a, b);
+  }
 
   constructor(private userService: UserService,
               private classDTOService: ClassDTOService,

@@ -3,6 +3,8 @@ import {ClassroomDetails} from "../../classroom-details";
 import {ClassDTO} from "../../class-dto";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ClassDTOService} from "../../class-dto.service";
+import {LoggedUserServiceService} from "../../logged-user.service";
+import { addHours } from 'date-fns';
 
 @Component({
   selector: 'app-add-schedule',
@@ -13,13 +15,14 @@ export class AddScheduleComponent implements OnInit {
 
   cap: ClassroomDetails["capacity"]=0;
   //newClassDTOobj:ClassDTO = new ClassDTO(0,0,0,'','',0,0,'','','','');
-  starttime= new Date();
-  endtime= new Date();
+  starttime:string='';
+  endtime:string='';
   courseNames:string[] | undefined;
   clDetails:ClassroomDetails[] | undefined;
   constructor( private route: ActivatedRoute,
                private classDTOService: ClassDTOService,
-               private router: Router) {
+               private router: Router,
+               public userlogged: LoggedUserServiceService) {
 
   }
 
@@ -44,6 +47,8 @@ export class AddScheduleComponent implements OnInit {
       }
     });
 
+    this.starttime=addHours(new Date(this.userlogged.getStartDate()), 3).toISOString().slice(0, 16);
+    this.endtime=addHours(new Date(this.userlogged.getStartDate()), 4).toISOString().slice(0, 16);
   }
 
   goToMainPage(){
