@@ -21,18 +21,12 @@ export class RepartitionDTOService {
     return this.httpClient.get<number[]>(`${this.GETRepartitionDTOURL}/${plannerId}`);
   }
 
-  createRepartition(plannerId: number, newRepartition:RepartitionDTO):Observable<Object>{
-    //return this.httpClient.post(`${this.POSTRepartitionDTOURL}/${plannerId}/${"enroll"}`,newRepartition);
-    return this.httpClient.post(`${this.POSTRepartitionDTOURL}/${plannerId}/${this.auxPath}`,newRepartition);
+  createRepartition(plannerId: number, studentId:number, newRepartition:RepartitionDTO):Observable<Object>{
+    return this.httpClient.post(`${this.POSTRepartitionDTOURL}/${plannerId}/${this.auxPath}/${studentId}`,newRepartition);
   }
 
   deleteRepartition(id:number, studentId:number):Observable<Object>{
     return this.httpClient.delete(`${this.POSTRepartitionDTOURL}/${id}/${this.auxPath}/${studentId}`);
-    //return this.httpClient.delete(`${this.POSTRepartitionDTOURL}/${plannerId}/${this.auxPath}`);
-
-    //return this.httpClient.request('DELETE', `${this.POSTRepartitionDTOURL}/${plannerId}/${this.auxPath}`, { body: repartition});
-
-
   }
 
 }

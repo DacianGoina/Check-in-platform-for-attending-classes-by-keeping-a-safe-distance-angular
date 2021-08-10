@@ -106,7 +106,7 @@ export class EnrollComponent implements OnInit {
 
       else {
         let newRepartition = new RepartitionDTO(this.currentUser.getUserId(), this.id);
-        this.repartitionService.createRepartition(this.id, newRepartition).subscribe(data => {
+        this.repartitionService.createRepartition(this.id, this.currentUser.getUserId(), newRepartition).subscribe(data => {
           this.classDTOobj.studentsNumber = this.classDTOobj.studentsNumber + 1;
           console.log(data);
         }, error => {
