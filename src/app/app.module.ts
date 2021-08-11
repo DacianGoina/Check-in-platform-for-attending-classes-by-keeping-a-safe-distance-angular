@@ -17,6 +17,7 @@ import {LoggedUserServiceService} from "./logged-user.service";
 import { EnrollComponent } from './components/enroll/enroll.component';
 import { AddClassComponent } from './components/add-class/add-class.component';
 import { AddClassroomComponent } from './components/add-classroom/add-classroom.component';
+import { ReportComponent } from './components/report/report.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { AddClassroomComponent } from './components/add-classroom/add-classroom.
     AddScheduleComponent,
     EnrollComponent,
     AddClassComponent,
-    AddClassroomComponent
+    AddClassroomComponent,
+    ReportComponent
   ],
   imports: [
     BrowserAnimationsModule,

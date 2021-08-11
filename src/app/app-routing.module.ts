@@ -8,6 +8,7 @@ import {EnrollComponent} from "./components/enroll/enroll.component";
 import {AddClassComponent} from "./components/add-class/add-class.component";
 import {AddClassroomComponent} from "./components/add-classroom/add-classroom.component";
 import {AdminGuard} from "./admin.guard";
+import {ReportComponent} from "./components/report/report.component";
 
 
 const routes: Routes = [
@@ -32,6 +33,10 @@ const routes: Routes = [
     path:'createClass',
     component: AddClassComponent,
     canActivate: [AdminGuard],
+  },
+  {
+    path:'report',
+    component: ReportComponent,
   },
   {
     path:'createClassroom',
