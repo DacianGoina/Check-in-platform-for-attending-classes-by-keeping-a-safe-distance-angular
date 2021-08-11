@@ -24,14 +24,14 @@ export class AddClassroomComponent implements OnInit {
   }
 
   // Return true if room name already exists
-  roomNameAlreadyExists(roomName: string): boolean {
+  public roomNameAlreadyExists(roomName: string): boolean {
     for (let rName of this.roomNamesList)
       if (roomName == rName)
         return true;
     return false;
   }
 
-  createClassroom() {
+  public createClassroom() {
     let name = document.getElementById("classroomName") as HTMLInputElement;
     let location = document.getElementById("location") as HTMLInputElement;
     let capacity = document.getElementById("capacity") as HTMLInputElement;
@@ -61,7 +61,7 @@ export class AddClassroomComponent implements OnInit {
     }
 
   }
-  goToMainPage(){
+  public goToMainPage(){
     this.router.navigate(['/class']);
   }
 }

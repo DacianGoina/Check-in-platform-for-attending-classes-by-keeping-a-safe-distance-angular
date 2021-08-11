@@ -89,12 +89,12 @@ export class CalendarComponent implements OnInit {
      addDays(new Date(this.today.setDate(this.first)), 6),
     ]
   }
-  nextweek(){
+  public nextweek(){
     this.today=addDays(this.today, 7);
     this.first= this.today.getDate()-this.today.getDay();
     this.thisweek=this.getweek();
   }
-  lastweek(){
+  public lastweek(){
     this.today=subDays(this.today, 7)
     this.first= this.today.getDate()-this.today.getDay();
     this.thisweek=this.getweek();
@@ -119,7 +119,7 @@ export class CalendarComponent implements OnInit {
   };
 
 
-  eventIsNow(thisdate: Date, hour:number):any{
+  public eventIsNow(thisdate: Date, hour:number):any{
     let cond: boolean=false;
     let times= setHours(thisdate, hour)
     let day= new Date;
@@ -135,14 +135,6 @@ export class CalendarComponent implements OnInit {
   }
 
 
-
-/*
-  updateSchedule(id:number){
-    //this.router.navigate(['class',id]);
-    this.router.navigateByUrl('/', {skipLocationChange: true})
-        .then(()=>this.router.navigate(['class', id]));
-  }
-*/
 
 
 }

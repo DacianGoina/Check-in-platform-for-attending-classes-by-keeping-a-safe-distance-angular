@@ -72,7 +72,7 @@ export class ScheduleComponent implements OnInit {
 
   }
 
-  sendUpdates():void{
+  public sendUpdates():void{
     // get element by ID pentru cele 2 selectoare
     let classroomName = (document.getElementById("selectClassroom")) as HTMLSelectElement;
     let courseName = (document.getElementById("selectCourse")) as HTMLSelectElement;
@@ -117,7 +117,7 @@ export class ScheduleComponent implements OnInit {
 
   }
 
-  deleteSchedule(){
+  public deleteSchedule(){
     let id = this.classDTOobj.id;
     console.log("Se va sterge schedule cu id: " + id);
     let bar = confirm('esti sigur?');
@@ -130,14 +130,14 @@ export class ScheduleComponent implements OnInit {
 
   }
 
-  goToMainPage(){
+  public goToMainPage(){
     this.router.navigate(['/class']);
   }
 
   isShowDiv = true;
   isShowForm= false;
 
-  toggleDisplayDiv() {
+  public toggleDisplayDiv() {
     this.isShowDiv = !this.isShowDiv;
     this.isShowForm= !this.isShowForm;
   }
@@ -146,12 +146,12 @@ export class ScheduleComponent implements OnInit {
 
 
 
-  toggleAdmin(){
+  public toggleAdmin(){
     return this.currentUser.getUserType()=='ADMIN';
   }
 
 
-  toggleStudents(){
+  public toggleStudents(){
     this.isShowStudents=!this.isShowStudents;
     this.isShowForm= !this.isShowForm;
   }
@@ -160,7 +160,7 @@ export class ScheduleComponent implements OnInit {
 
 
   // Export enrolled students data as EXCEL
-  generateExcel(){
+  public generateExcel(){
     let fileName = this.classDTOobj.courseName + "_" + this.classDTOobj.roomName + "_" + this.classDTOobj.startDate.split("T")[0] + ".xlsx";
 
     /* pass here the table id */

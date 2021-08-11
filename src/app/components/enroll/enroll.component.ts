@@ -68,7 +68,7 @@ export class EnrollComponent implements OnInit {
 
 
   // Return true if id is ins enrolledStudentsIDs (if a student (received from id) is enrolled in actual schedule)
-  isEnrolled(user:LoggedUserServiceService) : boolean{
+  public isEnrolled(user:LoggedUserServiceService) : boolean{
     let id = user.getUserId();
     for(let i of this.enrolledStudentsIDs)
       if(id == i)
@@ -78,7 +78,7 @@ export class EnrollComponent implements OnInit {
 
 
   // This method run when enrollBtn is clicked
-  enrollInClass(){
+  public enrollInClass(){
 
     let enrollBtn =  <HTMLButtonElement>document.getElementById("enrollBtn");
 

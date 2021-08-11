@@ -30,14 +30,14 @@ export class AddClassComponent implements OnInit {
   }
 
   // Check if a course already exists - return true if the course already exists
-  courseAlreadyExists(courseName:string):boolean{
+  public courseAlreadyExists(courseName:string):boolean{
     for(let cName of this.courseNamesList)
       if(courseName == cName)
         return true;
     return false;
   }
 
-  createClass(){
+  public createClass(){
     let className = document.getElementById("className") as HTMLInputElement;
     let teacherId = document.getElementById("selectTeacher") as HTMLSelectElement;
     let year = document.getElementById("year") as HTMLInputElement;
@@ -71,7 +71,7 @@ export class AddClassComponent implements OnInit {
 
   }
 
-  goToMainPage(){
+  public goToMainPage(){
     this.router.navigate(['/class']);
   }
 

@@ -14,7 +14,6 @@ import { addHours } from 'date-fns';
 export class AddScheduleComponent implements OnInit {
 
   cap: ClassroomDetails["capacity"]=0;
-  //newClassDTOobj:ClassDTO = new ClassDTO(0,0,0,'','',0,0,'','','','');
   starttime:string='';
   endtime:string='';
   courseNames:string[] | undefined;
@@ -51,11 +50,11 @@ export class AddScheduleComponent implements OnInit {
     this.endtime=addHours(new Date(this.userlogged.getStartDate()), 4).toISOString().slice(0, 16);
   }
 
-  goToMainPage(){
+  public goToMainPage(){
     this.router.navigate(['/class']);
   }
 
-  createSchedule(){
+  public createSchedule(){
 
     let classroomName = (document.getElementById("selectClassroom")) as HTMLSelectElement;
     let courseName = (document.getElementById("selectCourse")) as HTMLSelectElement;
