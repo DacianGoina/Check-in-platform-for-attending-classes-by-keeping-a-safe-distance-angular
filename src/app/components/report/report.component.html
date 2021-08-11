@@ -1,39 +1,54 @@
 <div class=" container cont">
   <div>
-    <h2>Generate by date</h2>
+    <h2 class="text-center">Creare raport</h2>
   </div>
 
   <div class="form-group pad">
-    <label>From:</label>
-    <input type="date" id="startDate" name="startDate"
+    <label>De la:</label>
+    <input type="date" id="startDate" name="startDate" id = "startDate"
            [ngModel]="startDate| date:'yyyy-MM-dd'"  >
   </div>
   <div class="form-group pad">
-    <label>To:</label>
-    <input type="date" id="endDate" name="endDate"
+    <label>Pana la:</label>
+    <input type="date" id="endDate" name="endDate" id = "endDate"
            [ngModel]="endDate| date:'yyyy-MM-dd'">
   </div>
   <div class="pad">
-    <button (click)="apareTabel()" class="btn btn-info">Generate</button>
+    <button (click)="generateTable()" class="btn btn-info">Generate</button>
   </div>
 
 </div>
 <div class="container cont"  [hidden]="tabel" >
   <div>
-    <button class="btn btn-info">Export ca Excel</button>
+    <button class="btn btn-info" (click) = "generateExcel()">Export ca Excel</button>
   </div>
 
   <div class="pad">
-    <table class="table table-hover">
+    <table class="table table-hover" id = "report-table">
       <thead >
       <tr>
         <th>Curs</th>
         <th>Sală</th>
-        <th>Nume profesor</th>
-        <th>capacitate</th>
+        <th>Profesor</th>
+        <th>Capacitate</th>
+        <th>Nr. inscrisi</th>
         <th>Data</th>
+        <th>Ora inceput</th>
+        <th>Ora final</th>
       </tr>
       </thead>
+      <tbody>
+      <tr *ngFor="let item of classDTOcurrentList">
+        <th>{{item.courseName}}</th>
+        <td>{{item.roomName}}</td>
+        <td>{{item.teacherFirstName + " " + item.teacherLastName}}</td>
+        <td>{{item.capacity}}</td>
+        <td>{{item.studentsNumber}}</td>
+        <td>{{item.startDate.split("T")[0]}}</td>
+        <td>{{item.startDate.split("T")[1].substring(0,5)}}</td>
+        <td>{{item.endDate.split("T")[1].substring(0,5)}}</td>
+      </tr>
+      </tbody>
     </table>
   </div>
 </div>
