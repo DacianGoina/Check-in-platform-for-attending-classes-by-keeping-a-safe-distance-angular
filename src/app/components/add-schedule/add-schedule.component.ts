@@ -79,8 +79,9 @@ export class AddScheduleComponent implements OnInit {
 
     this.classDTOService.createSchedule(newPlanner).subscribe(data =>{
       console.log(data);
+      window.alert("Creat cu succes!");
       this.goToMainPage();
-    },error => {console.log(error)});
+    },error => {console.log(error); window.alert("Nu a fost creat");});
   }
 
 }

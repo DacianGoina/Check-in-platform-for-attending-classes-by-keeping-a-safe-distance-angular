@@ -54,11 +54,6 @@ export class EnrollComponent implements OnInit {
       }
       else{
         enrollBtn.innerText = "Enroll in class";
-        if(this.classDTOobj.capacity>this.classDTOobj.studentsNumber){
-          enrollBtn.disabled= false;
-        }else{
-          enrollBtn.disabled=true;
-        }
       }
 
     });
